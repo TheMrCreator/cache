@@ -864,7 +864,7 @@
 			return $sce.trustAsHtml((input || '').replace(/</g, '&lt;')/*.replace(regex, function(_, match)
 			{
 				return '<img src="/ui/img/emoji/' + emojiList[match] + '" class="emoji" />';
-			}))*/;
+			}))*/);
 		};
 	}]);
 })();
