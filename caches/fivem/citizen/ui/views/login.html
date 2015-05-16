@@ -1,0 +1,55 @@
+<div ng-show="stage == 'select' || stage == 'platform'" class="profiles" ng-style="{ 'maxWidth': Math.min((profiles.length * (150 + 10)), 960) + 'px' }">
+<div>
+<div ng-repeat="profile in profiles" ng-class="[ 'profile', profile.type ]" ng-click="selectProfile(profile)">
+<h1 ng-bind-html="profile.name | emoji"></h1>
+<div class="avatar">
+	<img ng-if="profile.type != 'add'" ng-attr-src="{{ profile.tile }}" />
+	<i ng-if="profile.type == 'add'" class="fa fa-plus"></i>
+</div>
+<i ng-if="profile.type == 'steam'" class="fa fa-steam icon"></i>
+</div>
+
+<a href="#/login" ng-click="updateProfiles(); stage = 'select'" ng-show="stage == 'platform'">
+<i class="fa fa-arrow-circle-left"></i>
+</a>
+</div>
+</div>
+
+<div ng-show="stage == 'error'" style="max-width: 960px;">
+{{ errorMessage }}
+
+<a href="#/login" ng-click="stage = 'select'">
+<i class="fa fa-arrow-circle-left"></i>
+</a>
+</div>
+
+<div ng-show="stage == 'signin'" class="profiles profileSignIn" style="max-width: 960px;">
+<div>
+<div class="signinProfile">
+<div class="avatar">
+	<img ng-attr-src="{{ curProfile.tile }}" />
+</div>
+
+<h1 ng-bind-html="curProfile.name | emoji"></h1>
+
+<div ng-show="signinBusy">
+<i class="fa fa-5x fa-circle-o-notch fa-spin"></i> <span>Signing in</span>
+</div>
+
+<div ng-show="!signinBusy">
+<form class="signinForm">
+<input type="text" name="username" placeholder="Nickname/Email" ng-model="curProfile.data.username" ng-disabled="curProfile.identifier != 4294967295 && curProfile.parameters.username" />
+<input type="password" name="password" placeholder="Password" ng-model="curProfile.data.password" />
+
+<div><input type="checkbox" name="savePassword" id="savePassword" ng-model="curProfile.data._savePassword" /> <label for="savePassword">Save password</label></div>
+
+<input type="submit" value="Sign in" ng-click="selectProfile(curProfile)" />
+</form>
+
+<a href="#/login" ng-click="updateProfiles(); stage = 'select'">
+<i class="fa fa-arrow-circle-left"></i>
+</a>
+</div>
+</div>
+</div>
+</div>

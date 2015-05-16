@@ -1,0 +1,72 @@
+<html>
+<head>
+<style type="text/css">
+body
+{
+	background-color: transparent;
+	margin: 0px;
+	padding: 0px;
+}
+
+iframe
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	border: 0px;
+	width: 100%;
+	height: 100%;
+}
+</style>
+<script type="text/javascript">
+// raw javascript ftfw
+window.citFrames = {}
+
+registerFrameFunction(function(msg, frameName, frameUrl)
+{
+	if (msg == "createFrame")
+	{
+		var frame = document.createElement('iframe');
+		frame.onload = function()
+		{
+			frame.style.visibility = 'visible';
+		};
+		
+		frame.style.visibility = 'hidden';
+		
+		frame.src = frameUrl;
+		
+		citFrames[frameName] = frame;
+		
+		document.body.appendChild(frame);
+	}
+	else if (msg == "destroyFrame")
+	{
+		if (!(frameName in citFrames))
+		{
+			return;
+		}
+		
+		// bye!
+		document.body.removeChild(citFrames[frameName]);
+	}
+});
+
+registerPollFunction(function(frameName)
+{
+	if (!(frameName in citFrames))
+	{
+		return;
+	}
+	
+	var frame = citFrames[frameName];
+	frame.contentWindow.postMessage({ type: 'poll' }, '*');
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>

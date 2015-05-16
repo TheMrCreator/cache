@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="mpmenu">
+<head>
+    <title>CitizenMP UI</title>
+
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="fonts/stylesheet.css" />
+    <link rel="stylesheet" href="css/mpmenu.css" />
+
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="js/mpmenu.js"></script>
+    <script type="text/javascript" src="js/jquery.tinyscrollbar.js"></script>
+</head>
+
+<body onload="setTimeout(function() { invokeNative('connectTo', '192.168.178.83:30120'); }, 5000);">
+    <header>
+        <h1 id="logo" class="logotype">
+            <a href="#"><i class="fa fa-road"></i> CitizenMP</a>
+        </h1>
+        <span class="logotype subsection subsection-iv">IV</span>
+        <span class="with-viiv">with ViIV</span>
+    </header>
+
+    <div id="servers" ng-controller="ServerList">
+    <ul class="headerlist">
+		<li class="header">
+			<dl>
+				<dt class="hostname">
+					<a href="#" ng-click="sort('sortName')">Host name</a>
+
+					<span class="smaller"></span>
+				</dt>
+				<dd class="players">
+					<a href="#" ng-click="sort('clients')">Players</a>
+				</dd>
+				<dd class="ping">
+					<a href="#" ng-click="sort('ping')">Ping</a>
+				</dd>
+			</dl>
+		</li>
+	</ul>
+
+    <div>
+    <div id="serverlist_scrollbar" class="scrollbox">
+        <div class="scrollbar"><div class="track"><div class="thumb"></div></div></div>
+        <div class="viewport">
+    	<div class="overview">
+    	<ul class="list">
+    	   <li class="row" ng-repeat="server in servers | orderBy:orderType" data-addr="{{server.addr}}" on-last-repeat ng-click="connect(server)">
+			    <dl>
+				<dt class="hostname">
+					<h1 ng-bind-html="server.coloredName"></h1>
+                    <span class="description" ng-if="server.gameType || server.mapName">{{server.gameType}} - {{server.mapName}}</span>
+				</dt>
+				<dd class="players">
+					{{server.clients}} ({{server.sv_maxclients}})
+				</dd>
+				<dd class="ping">
+					{{server.ping}}
+				</dd>
+			</dl>
+           </li>
+    	</ul>
+    	</div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

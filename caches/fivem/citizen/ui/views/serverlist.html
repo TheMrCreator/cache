@@ -1,0 +1,43 @@
+		<div id="servers">
+			<ul class="headerlist">
+				<li class="header">
+					<dl>
+						<dt class="hostname">
+							<a ng-click="sort('sortName')">Host name</a>
+
+							<span class="smaller"></span>
+						</dt>
+						<dd class="players">
+							<a ng-click="sort('clients')">Players</a>
+						</dd>
+						<dd class="ping">
+							<a ng-click="sort('ping')">Ping</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+
+			<div id="serverlist_scrollbar" class="scrollbox">
+		        <div class="scrollbar"><div class="track"><div class="thumb"></div></div></div>
+		        <div class="viewport">
+		    	<div class="overview">
+		    	<ul class="list">
+		    	   <li class="row" ng-repeat="server in servers | orderBy:orderType" data-addr="{{server.addr}}" on-last-repeat ng-click="connect(server)">
+					    <dl>
+						<dt class="hostname">
+							<h1 ng-bind-html="server.coloredName"></h1>
+		                    <span class="description" ng-if="server.gameType || server.mapName">{{server.gameType}} - {{server.mapName}}</span>
+						</dt>
+						<dd class="players">
+							{{server.clients}} ({{server.sv_maxclients}})
+						</dd>
+						<dd class="ping">
+							{{server.ping}}
+						</dd>
+					</dl>
+		           </li>
+		    	</ul>
+		    	</div>
+		    </div>
+		    </div>
+		   </div>

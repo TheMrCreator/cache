@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="mpmenu" ng-controller="MainController">
+<head>
+	<title>CitizenMP</title>
+
+	<link rel="stylesheet" href="css/font-awesome.css" />
+	<link rel="stylesheet" href="fonts/stylesheet.css" />
+	<link rel="stylesheet" href="css/mpmenu_new.css" />
+
+	<meta charset="utf-8" />
+
+	<script type="text/javascript" src="js/bower.js"></script>
+</head>
+
+<body ng-class="[ isSignedIn() ? 'signedIn' : 'notSignedIn' ]">
+	<div id="background">
+	</div>
+
+	<div id="content">
+		<header>
+			<h1 id="logo" class="logotype">
+				<a><i class="fa fa-road"></i> CitizenFX</a>
+			</h1>
+
+			<ul class="menu" id="mmenu" ng-show="isSignedIn()" ng-style="calcMenuWidth(isSignedIn());">
+				<!--<li data-menu="home" data-target="/home" class="active">Home</li>
+				<li data-menu="story" data-target="/story">Story</li>
+
+				<li data-menu="multiplayer" data-target="/servers">Multiplayer</li>
+				<li data-menu="mods" data-target="/mods">Mods</li>-->
+
+				<li data-menu="multiplayer" data-target="/home" class="active">Multiplayer</li>
+			</ul>
+
+			<div class="user-info">
+				<div class="user-avatar" ng-show="isSignedIn()"><div><img ng-attr-src="{{ getProfile().tile }}" /><div class="overlayav"></div></div></div><span ng-show="isSignedIn()" ng-bind-html="getProfile().name | emoji"></span>
+
+				<div class="buttons">
+					<a href="#"><i class="fa fa-cogs"></i></a>
+					<a href="#" ng-click="exitGame()"><i class="fa fa-times"></i></a>
+				</div>
+			</div>
+		</header>
+
+		<section class="page" ng-view>
+		</section>
+		</div>
+
+<script id="layout-replacement" type="text/x-handlebars-template">
+$fxcolor: {{ color }};
+
+.logotype i
+{
+	color: saturate($fxcolor, 50%);
+}
+
+#logo
+{
+	border-right-color: saturate($fxcolor, 20%);
+}
+
+ul.menu li
+{
+	color: desaturate($fxcolor, saturation($fxcolor) * 0.3)
+}
+
+.profiles form input[type=submit]:active
+{
+	background-color: rgba(saturate($fxcolor, saturation($fxcolor) * 0.3), 0.8);
+}
+
+.profiles a
+{
+	color: lighten(saturate($fxcolor, saturation($fxcolor) * 0.4), 30%) !important;
+}
+</script>
+
+<script type="text/javascript" src="js/emoji.js"></script>
+<script type="text/javascript" src="js/mpmenu_new.js"></script>
+<script type="text/javascript" src="js/mpmenu.js"></script>
+<script type="text/javascript" src="js/jquery.tinyscrollbar.js"></script>
+<script type="text/javascript" src="js/controllers/auth.js"></script>
+<script type="text/javascript" src="js/controllers/home.js"></script>
+<script type="text/javascript" src="js/controllers/mods.js"></script>
+<script type="text/javascript" src="js/controllers/story.js"></script>
+</body>
+</html>
