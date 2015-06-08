@@ -27,6 +27,7 @@ var app = angular.module('mpmenu', ['ngRoute', 'ngAnimate', 'auth', 'home', 'mod
 })
 .controller('ServerList', ['$scope', '$sce', function($scope, $sce)
 {
+    $scope.favorites = [];
     $scope.servers = [];
 
     /*for (i = 0; i < 30; i++)
@@ -40,6 +41,7 @@ var app = angular.module('mpmenu', ['ngRoute', 'ngAnimate', 'auth', 'home', 'mod
         });
     }*/
 
+    invokeNative('getFavorites', '');
     invokeNative('refreshServers', '');
 
     $scope.orderType = ['+ping'];
@@ -79,6 +81,21 @@ var app = angular.module('mpmenu', ['ngRoute', 'ngAnimate', 'auth', 'home', 'mod
         invokeNative('connectTo', server.addr);
     };
 
+    $scope.favorite = function(server)
+    {
+        if (!server.favorite)
+        {
+            $scope.favorites.push(server.addr);
+        }
+        else
+        {
+            $scope.favorites = $scope.favorites.filter(function(fav) { return fav != server.addr });
+        }
+
+        server.favorite = !server.favorite;
+        invokeNative('saveFavorites', JSON.stringify($scope.favorites));
+    };
+
     window.addEventListener('message', function(e)
     {
         var data = e.data;
@@ -95,8 +112,24 @@ var app = angular.module('mpmenu', ['ngRoute', 'ngAnimate', 'auth', 'home', 'mod
                     mapName: e.data.mapname,
                     gameType: e.data.gametype,
                     coloredName: $sce.trustAsHtml($.colorize($('<p></p>').text(e.data.name).html())),
-                    sortName: e.data.name.replace(/^[0-9]/, '')
+                    sortName: e.data.name.replace(/^[0-9]/, ''),
+                    favorite: $scope.favorites.filter(function(favorite) {
+                        return favorite == e.data.addr
+                    }).length > 0
                 });
+            });
+        }
+        else if (e.data.type == 'getFavorites')
+        {
+            $scope.$apply(function()
+            {
+                $scope.favorites = e.data.list;
+                for (var i = 0, server; (server = $scope.servers[i]); i++)
+                {
+                    server.favorite = $scope.favorites.filter(function(favorite) {
+                        return favorite == e.data.addr
+                    }).length > 0;
+                }
             });
         }
         else if (e.data.type == 'connecting')
