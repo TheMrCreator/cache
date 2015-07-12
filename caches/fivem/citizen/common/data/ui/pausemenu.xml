@@ -188,8 +188,17 @@
 				<Item> <cTextId>MO_TAR4</cTextId> </Item>
 			</MenuDisplayOptions>
 		</Item>
-		
-		<Item>
+    
+    <Item>
+			<MenuOption>MENU_OPTION_DISPLAY_MEASUREMENT</MenuOption>
+			
+			<MenuDisplayOptions>
+				<Item> <cTextId>MS_IMPERIAL</cTextId> </Item>
+				<Item> <cTextId>MS_METRIC</cTextId> </Item>
+			</MenuDisplayOptions>
+		</Item>
+
+    <Item>
 			<MenuOption>MENU_OPTION_CONTROLS_CONTEXT</MenuOption>
 			
 			<MenuDisplayOptions>
@@ -227,6 +236,14 @@
 			<MenuDisplayOptions>
 				<Item> <cTextId>MO_ADB_OFF</cTextId> </Item>
 				<Item> <cTextId>MO_ADB_ON</cTextId> </Item>
+			</MenuDisplayOptions>
+		</Item>	
+		
+		<Item platform="pc_only">
+			<MenuOption>MENU_OPTION_FPS_DEFAULT_AIM_TYPE</MenuOption>
+			<MenuDisplayOptions>
+				<Item> <cTextId>MO_FPS_DEFAULT_AIM_NORMAL</cTextId> </Item>
+				<Item> <cTextId>MO_FPS_DEFAULT_AIM_IRON</cTextId> </Item>
 			</MenuDisplayOptions>
 		</Item>	
 	
@@ -389,6 +406,23 @@
 		</Item>
 		
 		<Item>
+			<MenuOption>MENU_OPTION_GFX_SCALING</MenuOption>
+			
+			<MenuDisplayOptions>
+				<Item> <cTextId>MO_OFF</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_1o2</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_2o3</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_3o4</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_5o6</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_5o4</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_3o2</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_7o4</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_2o1</cTextId> </Item>
+				<Item> <cTextId>MO_GFX_5o2</cTextId> </Item>
+			</MenuDisplayOptions>
+		</Item>
+		
+		<Item>
 			<MenuOption>MENU_OPTION_GFX_ANISOT</MenuOption>
 			
 			<MenuDisplayOptions>
@@ -457,7 +491,20 @@
 				<Item> <cTextId>MO_ON</cTextId> </Item>
 			</MenuDisplayOptions>
 		</Item>
-		
+
+    <Item>
+      <MenuOption>MENU_OPTION_REPLAY_AUTO_SAVE_RECORDING</MenuOption>
+
+      <MenuDisplayOptions>
+        <Item>
+          <cTextId>MO_OFF</cTextId>
+        </Item>
+        <Item>
+          <cTextId>MO_ON</cTextId>
+        </Item>
+      </MenuDisplayOptions>
+    </Item>
+    
 		<Item>
 			<MenuOption>MENU_OPTION_VIDEO_UPLOAD_PRIVACY</MenuOption>
 	
@@ -636,6 +683,7 @@
 		<ButtonPrompts>
 			<CMenuButton> <hButtonHash>HUD_INPUT1C</hButtonHash>		<ButtonInputGroup>INPUTGROUP_FRONTEND_BUMPERS</ButtonInputGroup> 	<Contexts>*NONE*,TABS_ARE_COLUMNS,NAVIGATING_CONTENT,MENU_OFF</Contexts>				</CMenuButton>
 			<CMenuButton> <hButtonHash>IB_HIDEMENU</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> 						<Contexts>*ALL*,CAN_TOGGLE_MENU,		 *NONE*,MENU_OFF, NAVIGATING_CONTENT</Contexts> </CMenuButton>
+			<CMenuButton> <hButtonHash>IB_SOCIALCLUB_UI</hButtonHash>	<ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput> 					<Contexts>*ALL*,x64,		 *NONE*,MENU_OFF, NAVIGATING_CONTENT</Contexts> </CMenuButton>
 			<CMenuButton> <hButtonHash>IB_SHOWMENU</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> 						<Contexts>*ALL*,CAN_TOGGLE_MENU,MENU_OFF,*NONE*,		  NAVIGATING_CONTENT</Contexts> </CMenuButton>
 			<CMenuButton> <hButtonHash>IB_SELECT</hButtonHash>			<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> 					<Contexts>*NONE*,MENU_OFF,HIDE_ACCEPTBUTTON,HasContextMenu</Contexts> 					</CMenuButton>
 			<CMenuButton> <hButtonHash>IB_OPTIONS</hButtonHash>			<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> 					<Contexts>*NONE*,MENU_OFF,HIDE_ACCEPTBUTTON,*ALL*,HasContextMenu</Contexts> 			</CMenuButton>
@@ -945,7 +993,7 @@
 			<depth>0</depth>
 			<MenuItems>
 				<Item> <cTextId>PM_SCR_MAP</cTextId> <MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_MAP</MenuUniqueId> </Item>
-				<Item> <cTextId>PM_SCR_GAM</cTextId> <MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_GAME</MenuUniqueId> </Item>
+				<Item> <cTextId>PM_SCR_MIS</cTextId> <MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_MISSION_CREATOR</MenuUniqueId> </Item>
 				<!--<Item> <cTextId>PM_SCR_PLA</cTextId> <MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_PLAYERS</MenuUniqueId> </Item>-->
 				<Item> <cTextId>PM_SCR_FRI</cTextId> <MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_FRIENDS_MP</MenuUniqueId> </Item>
 				<Item> <cTextId>PM_SCR_INF</cTextId> <MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_INFO</MenuUniqueId> </Item>
@@ -1153,20 +1201,23 @@
 			<ButtonList>
 				<ButtonPrompts>
 				
-					<CMenuButton> <hButtonHash>IB_MS_WARP</hButtonHash>		<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> <Contexts>*ALL*,MAP_CanWarp</Contexts></CMenuButton>
-					<CMenuButton> <hButtonHash>IB_WAYPOINT</hButtonHash>	<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> <Contexts>*ALL*,MAP_Waypoint</Contexts></CMenuButton>
+					<CMenuButton> <hButtonHash>IB_MS_WARP</hButtonHash>		<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> <Contexts>*ALL*,MAP_CanWarp, *NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts></CMenuButton>
+					<CMenuButton> <hButtonHash>IB_WAYPOINT</hButtonHash>	<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> <Contexts>*ALL*,MAP_Waypoint, *NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts></CMenuButton>
 					<CMenuButton> <hButtonHash>IB_ZOOM</hButtonHash>		<ButtonInputGroup>INPUTGROUP_FRONTEND_TRIGGERS</ButtonInputGroup> <Contexts>*ALL*,MAP_CanZoom</Contexts></CMenuButton>
-					<CMenuButton> <hButtonHash>IB_POI</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> <Contexts>*ALL*,MAP_CanDropPOI</Contexts></CMenuButton>
+					<CMenuButton> <hButtonHash>IB_POI</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> <Contexts>*ALL*,MAP_CanDropPOI, *NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts></CMenuButton>
 				<!--	<CMenuButton> <hButtonHash>IB_CRIMINAL</hButtonHash>	<ButtonInput>INPUT_FRONTEND_CANCEL</ButtonInput> <Contexts>*ALL*,MAP_Criminal</Contexts></CMenuButton> -->
-					<CMenuButton> <hButtonHash>IB_INTEXT</hButtonHash>		<ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput> <Contexts>*ALL*,MAP_Interior,*NONE*,MAP_Criminal</Contexts></CMenuButton>
-					<CMenuButton> <hButtonHash>IB_GOLF</hButtonHash>		<ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput> <Contexts>*ALL*,MAP_Golf,*NONE*,MAP_Interior,MAP_Criminal</Contexts></CMenuButton>
+					<CMenuButton> <hButtonHash>IB_INTEXT</hButtonHash>		<ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput> <Contexts>*ALL*,MAP_Interior,*NONE*,MAP_Criminal, *NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts></CMenuButton>
+					<CMenuButton> <hButtonHash>IB_GOLF</hButtonHash>		<ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput> <Contexts>*ALL*,MAP_Golf,*NONE*,MAP_Interior,MAP_Criminal, *NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts></CMenuButton>
 				
 					<!--<CMenuButton> <hButtonHash>IB_NAVIGATE</hButtonHash>	<ButtonInputGroup>INPUTGROUP_FRONTEND_LSTICK_ALL</ButtonInputGroup></CMenuButton>-->
-					<CMenuButton> <hButtonHash>IB_LEGEND</hButtonHash>		<ButtonInputGroup>INPUTGROUP_FRONTEND_DPAD_ALL</ButtonInputGroup> </CMenuButton>
-					<CMenuButton> <hButtonHash>IB_BLIPVIS1</hButtonHash>		<ButtonInput>INPUT_FRONTEND_RS</ButtonInput> <Contexts>*ALL*,MAP_VisHigh</Contexts></CMenuButton>
-					<CMenuButton> <hButtonHash>IB_BLIPVIS0</hButtonHash>		<ButtonInput>INPUT_FRONTEND_RS</ButtonInput> <Contexts>*ALL*,MAP_VisLow</Contexts></CMenuButton>
-					<CMenuButton> <hButtonHash>IB_SRTMISS</hButtonHash>		<ButtonInput>INPUT_FRONTEND_X</ButtonInput> <Contexts>*ALL*,MAP_CanStartMiss</Contexts></CMenuButton>
-					<CMenuButton> <hButtonHash>IB_BACK</hButtonHash> 		<ButtonInput>INPUT_FRONTEND_CANCEL</ButtonInput> </CMenuButton>
+					<CMenuButton> <hButtonHash>IB_LEGEND</hButtonHash>		<ButtonInputGroup>INPUTGROUP_FRONTEND_DPAD_ALL</ButtonInputGroup> <Contexts>*NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>IB_BLIPVIS1</hButtonHash>		<ButtonInput>INPUT_FRONTEND_RS</ButtonInput> <Contexts>*ALL*,MAP_VisHigh, *NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts></CMenuButton>
+					<CMenuButton> <hButtonHash>IB_BLIPVIS0</hButtonHash>		<ButtonInput>INPUT_FRONTEND_RS</ButtonInput> <Contexts>*ALL*,MAP_VisLow, *NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts></CMenuButton>
+					<CMenuButton> <hButtonHash>IB_SRTMISS</hButtonHash>		<ButtonInput>INPUT_FRONTEND_X</ButtonInput> <Contexts>*ALL*,MAP_CanStartMiss, *NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts></CMenuButton>
+					<CMenuButton> <hButtonHash>IB_BACK</hButtonHash> 		<ButtonInput>INPUT_FRONTEND_CANCEL</ButtonInput> <Contexts>*NONE*,CORONA_BIGMAP_CLOSE, CORONA_BIGMAP_CLOSE_KM</Contexts> </CMenuButton>
+					
+					<CMenuButton> <hButtonHash>FM_COR_HIDE_BIGMAP</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput>			<Contexts>*ALL*, CORONA_BIGMAP_CLOSE, *NONE*</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>FM_COR_HIDE_BIGMAP</hButtonHash>		<ButtonInput>INPUT_FRONTEND_LS</ButtonInput>		<Contexts>*ALL*, CORONA_BIGMAP_CLOSE_KM, *NONE*</Contexts> </CMenuButton>
 				</ButtonPrompts>
 			</ButtonList>
 			<MenuItems>	 
@@ -1566,7 +1617,7 @@
 					<CMenuButton> <hButtonHash>IB_UPDATE_SOCIAL_CLUB</hButtonHash> <ButtonInput>INPUT_FRONTEND_Y</ButtonInput> <Contexts>*ALL*,UpdateSocialClub,NAVIGATING_CONTENT,*NONE*,Xbox360,Offline,NotInSocialClub</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_COMPARE</hButtonHash>		<ButtonInput>INPUT_FRONTEND_X</ButtonInput> <Contexts>*NONE*,IsLocalPlayer,SyncingStats,Comparing,*ALL*,HasPlayers,NAVIGATING_CONTENT,HasPlayedMode</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_UNCOMPARE</hButtonHash>	<ButtonInput>INPUT_FRONTEND_X</ButtonInput> <Contexts>*NONE*,IsLocalPlayer,SyncingStats,*ALL*,HasPlayers,NAVIGATING_CONTENT,HasPlayedMode,Comparing</Contexts> </CMenuButton>
-					<CMenuButton> <hButtonHash>IB_INVITE_PARTY</hButtonHash>	<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> <Contexts>*ALL*,Xbox360,HasPlayers,NAVIGATING_CONTENT</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>IB_INVITE_PARTY</hButtonHash>	<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> <Contexts>*NONE*,SoloSession, *ALL*,Xbox360,HasPlayers,NAVIGATING_CONTENT</Contexts> </CMenuButton>
 				</ButtonPrompts>
 			</ButtonList>
 			<ContextMenu>
@@ -1723,12 +1774,8 @@
 				<ButtonPrompts>
 					<CMenuButton> <hButtonHash>HUD_INPUT1C</hButtonHash>	<ButtonInputGroup>INPUTGROUP_FRONTEND_DPAD_LR</ButtonInputGroup> 		<Contexts>*NONE*,NAVIGATING_CONTENT</Contexts></CMenuButton>
 					<!--<CMenuButton> <hButtonHash>FE_HLP5</hButtonHash>		<RawButtonIcon>ARROW_UPDOWN</RawButtonIcon> 	  	<Contexts>*ANY*,SINGLE_SCREEN,NAVIGATING_CONTENT</Contexts></CMenuButton>-->
-					
-					
-					<!--This button is superfluous, so bye!
-					<CMenuButton> <hButtonHash>IB_ADJUST</hButtonHash>		<RawButtonIcon>ARROW_LEFTRIGHT</RawButtonIcon> 	  	<Contexts>*ALL*,STATS_PlayerSwitch,*ANY*,SINGLE_SCREEN,NAVIGATING_CONTENT</Contexts></CMenuButton>-->
-				
-					<!--<CMenuButton> <hButtonHash>CMRC_GOTOSTORE</hButtonHash>	<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> <Contexts>*ALL*,MENU_UNIQUE_ID_HEADER,STORE_AVAILABLE</Contexts> </CMenuButton>-->
+          <!--<CMenuButton> <hButtonHash>CMRC_GOTOSTORE</hButtonHash>	<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> <Contexts>*ALL*,MENU_UNIQUE_ID_HEADER,STORE_AVAILABLE</Contexts> </CMenuButton>-->
+					<CMenuButton> <hButtonHash>IB_ADJUST</hButtonHash>		<RawButtonIcon>ARROW_LEFTRIGHT</RawButtonIcon> 	  	<Contexts>*ALL*,STATS_PlayerSwitch,*ANY*,SINGLE_SCREEN,NAVIGATING_CONTENT</Contexts></CMenuButton>
 					<CMenuButton> <hButtonHash>IB_SELECT</hButtonHash>		<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> <Contexts>*ANY*,STATS_CanSelect</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_SCROLL</hButtonHash>	<ButtonInput>INPUT_FRONTEND_RIGHT_AXIS_Y</ButtonInput> <Contexts>*ANY*, STATS_CanScroll</Contexts></CMenuButton>
 					<CMenuButton> <hButtonHash>IB_BACK</hButtonHash> 		<ButtonInput>INPUT_FRONTEND_CANCEL</ButtonInput> </CMenuButton>
@@ -1811,6 +1858,7 @@
 					<CMenuButton> <hButtonHash>PM_RC_BIKE</hButtonHash> <ButtonInput>INPUT_FRONTEND_LS</ButtonInput> <Contexts>*ALL*,CycleToBikeRaces</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>PM_RC_AIR</hButtonHash> <ButtonInput>INPUT_FRONTEND_LS</ButtonInput> <Contexts>*ALL*,CycleToAirRaces</Contexts> </CMenuButton>	
 					<CMenuButton> <hButtonHash>PM_RC_BOAT</hButtonHash> <ButtonInput>INPUT_FRONTEND_LS</ButtonInput> <Contexts>*ALL*,CycleToWaterRaces</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>PM_RC_STUNT</hButtonHash> <ButtonInput>INPUT_FRONTEND_LS</ButtonInput> <Contexts>*ALL*,CycleToStuntRaces</Contexts> </CMenuButton>
 
 					<CMenuButton> <hButtonHash>PM_CAP_ALL</hButtonHash> <ButtonInput>INPUT_FRONTEND_LS</ButtonInput> <Contexts>*ALL*,CycleToAllCaptures</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>PM_CAP_GTA</hButtonHash> <ButtonInput>INPUT_FRONTEND_LS</ButtonInput> <Contexts>*ALL*,CycleToGTACaptures</Contexts> </CMenuButton>
@@ -1844,7 +1892,6 @@
 				<type>GALLERY</type>
 			</runtime>
 			<depth>1</depth>
-			<Flags>EnterMenuOnMouseClick</Flags>
 			<MenuItems>
 				<Item>
 					<MenuAction>MENU_OPTION_ACTION_FILL_CONTENT</MenuAction>
@@ -1904,11 +1951,11 @@
 			<Flags>LayoutChangedOnBack EnterMenuOnMouseClick</Flags>
 			<depth>1</depth>
 			<MenuItems>
-				<!--<Item> <cTextId>PM_REPEAT</cTextId>		<MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_REPLAY_MISSION</MenuUniqueId></Item>
-				<Item> <cTextId>PM_REPEATRC</cTextId>	<MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_REPLAY_RANDOM</MenuUniqueId></Item>
+				<Item> <cTextId>PM_REPEAT</cTextId>		<MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_REPLAY_MISSION</MenuUniqueId> <!--<Contexts>HAS_DONE_MISSIONS</Contexts>--></Item>
+				<Item> <cTextId>PM_REPEATRC</cTextId>	<MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_REPLAY_RANDOM</MenuUniqueId> <!--<Contexts>HAS_DONE_MISSIONS</Contexts>--></Item>
 				<Item> <cTextId>PM_PANE_LOA</cTextId>	<MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_LOAD_GAME</MenuUniqueId> </Item>
-				<Item> <cTextId>PM_PANE_NEW</cTextId>	<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_NEW_GAME</MenuUniqueId> </Item>-->
-				<Item> <cTextId>PM_PANE_LEAVE</cTextId> <MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_SHOW_ACCOUNT_PICKER</MenuUniqueId> <Contexts>*ALL*, x64</Contexts></Item>
+				<Item> <cTextId>PM_PANE_NEW</cTextId>	<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_NEW_GAME</MenuUniqueId> </Item>
+				<Item> <cTextId>PM_PANE_PICK</cTextId> <MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_SHOW_ACCOUNT_PICKER</MenuUniqueId> <Contexts>*ALL*, DURANGO</Contexts></Item>
 				<Item> <cTextId>PM_PANE_QUIT</cTextId> <MenuAction>MENU_OPTION_ACTION_LINK</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_EXIT_TO_WINDOWS</MenuUniqueId> <Contexts>*ALL*, x64</Contexts></Item>
 				<Item> <MenuAction>MENU_OPTION_ACTION_FILL_CONTENT</MenuAction> </Item>
 			</MenuItems>
@@ -1917,6 +1964,7 @@
 				<ButtonPrompts  IncludeDefaults="false">
 					<CMenuButton> <hButtonHash>HUD_INPUT1C</hButtonHash>		<ButtonInputGroup>INPUTGROUP_FRONTEND_BUMPERS</ButtonInputGroup> 	<Contexts>*NONE*,TABS_ARE_COLUMNS,NAVIGATING_CONTENT,MENU_OFF</Contexts>				</CMenuButton>
 					<CMenuButton> <hButtonHash>IB_HIDEMENU</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> 						<Contexts>*ALL*,CAN_TOGGLE_MENU,		 *NONE*,MENU_OFF, NAVIGATING_CONTENT</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>IB_SOCIALCLUB_UI</hButtonHash>	<ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput> 						<Contexts>*ALL*,x64,		 *NONE*,MENU_OFF, NAVIGATING_CONTENT</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_SHOWMENU</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> 						<Contexts>*ALL*,CAN_TOGGLE_MENU,MENU_OFF,*NONE*,		  NAVIGATING_CONTENT</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_SELECT</hButtonHash>			<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> 					<Contexts>*NONE*,MENU_OFF,HIDE_ACCEPTBUTTON,HasContextMenu,NO_SAVEGAMES</Contexts> 					</CMenuButton>
 					<CMenuButton> <hButtonHash>IB_OPTIONS</hButtonHash>			<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> 					<Contexts>*NONE*,MENU_OFF,HIDE_ACCEPTBUTTON,*ALL*,HasContextMenu</Contexts> 			</CMenuButton>
@@ -2085,9 +2133,9 @@
 				<Item platform="!ps4"> <cTextId>MO_SAFEZONE</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_SAFEZONE_SIZE</MenuPref> 	<MenuOption>MENU_OPTION_SLIDER</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item platform="ps4"> <cTextId>MO_SAFEZONE</cTextId>	<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction>		<MenuUniqueIdHash>PREF_SAFEZONE_SIZE</MenuUniqueIdHash> </Item>
 				<Item> <cTextId>MO_DOF</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_DOF</MenuPref> 				<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*NONE*,x64</Contexts> </Item>
-				<Item> <cTextId>GFX_MB_STR</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_GFX_MB_STRENGTH</MenuPref>	<MenuOption>MENU_OPTION_SLIDER</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*NONE*,x64</Contexts> </Item>
 				<Item> <cTextId>MO_SKFX</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_SKFX</MenuPref> 				<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>MO_SUB</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_SUBTITLES</MenuPref> 		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
+        <Item> <cTextId>MO_MEASUREMENT</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MEASUREMENT_SYSTEM</MenuPref> 		<MenuOption>MENU_OPTION_DISPLAY_MEASUREMENT</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>MO_LAN</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_CURRENT_LANGUAGE</MenuPref> 	<MenuOption>MENU_OPTION_DISPLAY_LANGUAGE</MenuOption>	<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*NONE*,Final</Contexts></Item>
 				<Item> <cTextId>MO_RDF</cTextId>		<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction>			<MenuUniqueIdHash>RESTORE_DEFAULTS_DISPLAY</MenuUniqueIdHash> </Item>
 			</MenuItems>
@@ -2115,7 +2163,8 @@
 
 				<Item> <cTextId>GFX_FXAA</cTextId>			<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_GFX_FXAA</MenuPref> 					<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>GFX_MSAA</cTextId>			<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_GFX_MSAA</MenuPref> 					<MenuOption>MENU_OPTION_GFX_MSAA</MenuOption>			<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
-				<Item> <cTextId>GFX_TXAA</cTextId>			<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_GFX_TXAA</MenuPref> 					<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,GFX_SUPPORT_TXAA</Contexts> </Item>
+
+		<Item> <cTextId>GFX_TXAA</cTextId>			<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_GFX_TXAA</MenuPref> 					<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,GFX_SUPPORT_TXAA</Contexts> </Item>
 				<Item> <cTextId>VID_VSYNC</cTextId>			<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_VID_VSYNC</MenuPref> 				<MenuOption>MENU_OPTION_VID_VSYNC</MenuOption>			<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>MO_STER</cTextId>			<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_VID_STEREO</MenuPref>				<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ANY*,VID_STEREO</Contexts></Item>
         <Item> <cTextId>STE_CONVERGE</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_VID_STEREO_CONVERGENCE</MenuPref>	<MenuOption>MENU_OPTION_SLIDER</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ANY*,VID_STEREO</Contexts></Item>
@@ -2167,7 +2216,7 @@
 		<Item> <cTextId>AGFX_HD_FLIGHT</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_ADV_GFX_HD_FLIGHT</MenuPref>				<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
         <Item> <cTextId>AGFX_MAXLOD</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_ADV_GFX_MAX_LOD</MenuPref>				<MenuOption>MENU_OPTION_SLIDER</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
         <Item> <cTextId>AGFX_SHADOWS_DIST</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_ADV_GFX_SHADOWS_DIST_MULT</MenuPref>				<MenuOption>MENU_OPTION_SLIDER</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
-		
+		<Item> <cTextId>GFX_SCALING</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_GFX_SCALING</MenuPref> 				<MenuOption>MENU_OPTION_GFX_SCALING</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				
 				<Item> <cTextId>MO_RDF</cTextId>			<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction>			<MenuUniqueIdHash>RESTORE_DEFAULTS_ADVANCED_GFX</MenuUniqueIdHash> </Item>
 			</MenuItems>
@@ -2181,7 +2230,8 @@
 			<MenuItems>
 				<!--<Item> <cTextId>PM_PANE_RPL_MODE</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_REPLAY_MODE</MenuPref>			<MenuOption>MENU_OPTION_REPLAY_MODE</MenuOption>		 <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>-->
 				<Item> <cTextId>PM_PANE_RPL_MEM_LIMIT</cTextId>				<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_REPLAY_MEM_LIMIT</MenuPref>					<MenuOption>MENU_OPTION_REPLAY_MEM_LIMIT</MenuOption>	 				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,x64</Contexts></Item>
-        <!--<Item> <cTextId>PM_PANE_RPL_AUTO_RESUME_RECORDING</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_REPLAY_AUTO_RESUME_RECORDING</MenuPref>		<MenuOption>MENU_OPTION_REPLAY_AUTO_RESUME_RECORDING</MenuOption>	 	<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>-->
+        		<!--<Item> <cTextId>PM_PANE_RPL_AUTO_RESUME_RECORDING</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_REPLAY_AUTO_RESUME_RECORDING</MenuPref>		<MenuOption>MENU_OPTION_REPLAY_AUTO_RESUME_RECORDING</MenuOption>	 	<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>-->
+        		<Item> <cTextId>PM_PANE_RPL_AUTO_SAVE_RECORDING</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_REPLAY_AUTO_SAVE_RECORDING</MenuPref>		<MenuOption>MENU_OPTION_REPLAY_AUTO_SAVE_RECORDING</MenuOption>	 	<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>PM_PANE_RPL_UPLOAD_PRIVACY</cTextId>				<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_VIDEO_UPLOAD_PRIVACY</MenuPref>					<MenuOption>MENU_OPTION_VIDEO_UPLOAD_PRIVACY</MenuOption>	 				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>REDITOR_TOOLTIP</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_ROCKSTAR_EDITOR_TOOLTIP</MenuPref> 			<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>REDITOR_EXPORT_GRAPHICS_UPGRADE</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_ROCKSTAR_EDITOR_EXPORT_GRAPHICS_UPGRADE</MenuPref> 			<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,x64</Contexts>  </Item>
@@ -2238,7 +2288,7 @@
 				<Item> <cTextId>MO_SNIPE</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_SNIPER_ZOOM</MenuPref> 			<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<!--<Item> <cTextId>MO_CMS</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_CINEMATIC_SHOOTING</MenuPref> 		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*NONE*,InMP</Contexts> </Item>-->
 				<Item> <cTextId>MO_DHB</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_ALTERNATE_HANDBRAKE</MenuPref> 		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*NONE*,RemotePlay</Contexts></Item>
-				<Item> <cTextId>MO_ADB</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_ALTERNATE_DRIVEBY</MenuPref> 		<MenuOption>MENU_OPTION_DISPLAY_CONTROL_DRIVEBY</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*NONE*,RemotePlay</Contexts></Item>
+				<Item> <cTextId>MO_ADB</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_ALTERNATE_DRIVEBY</MenuPref> 		<MenuOption>MENU_OPTION_DISPLAY_CONTROL_DRIVEBY</MenuOption>			<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*NONE*,RemotePlay</Contexts></Item>
 				<Item> <cTextId>MO_LTE</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_CONTROLLER_LIGHT_EFFECT</MenuPref> 	<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>	  <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,PS4</Contexts></Item>
 				<Item> <cTextId>MO_GAMEPAD</cTextId>		<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction>		<MenuUniqueIdHash>PREF_PCGAMEPAD</MenuUniqueIdHash>		<Contexts>*ALL*,x64,*NONE*,OnLandingPage,InMP</Contexts> </Item>
 				<Item> <cTextId>MO_RDF</cTextId>		<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction>			<MenuUniqueIdHash>RESTORE_DEFAULTS_CONTROLS</MenuUniqueIdHash> </Item>
@@ -2253,8 +2303,11 @@
 			<MenuItems>
 				<Item> <cTextId>MO_MTYPE</cTextId>			<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_TYPE</MenuPref>			<MenuOption>MENU_OPTION_MOUSE_TYPE</MenuOption>			<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>MO_MONFSENS</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_ON_FOOT_SCALE</MenuPref>	<MenuOption>MENU_OPTION_SLIDER</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
+        <Item> <cTextId>MO_MOUSEWEIGHT</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_WEIGHT_SCALE</MenuPref>	<MenuOption>MENU_OPTION_SLIDER</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
+        <Item> <cTextId>MO_MOUSEACC</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_ACCELERATION</MenuPref>		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>MO_INVMOUSE</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_INVERT_MOUSE</MenuPref> 			<MenuOption>MENU_OPTION_DISPLAY_INVERT_LOOK</MenuOption>   <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,x64</Contexts></Item>
 				<Item> <cTextId>MO_KBM_TOGGLAIM</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_KBM_TOGGLE_AIM</MenuPref>		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
+				<Item platform="pc_only"> <cTextId>MO_FPS_DEFAULT_AIM_TYPE</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_FPS_DEFAULT_AIM_TYPE</MenuPref> 		<MenuOption>MENU_OPTION_FPS_DEFAULT_AIM_TYPE</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>				
 				<Item> <cTextId>MO_MOUSEDRIVE</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_DRIVE</MenuPref> 			<MenuOption>MENU_OPTION_CAM_VEH_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>MO_MOUSEFLY</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_FLY</MenuPref> 			<MenuOption>MENU_OPTION_CAM_VEH_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
         <Item> <cTextId>MO_MOUSESUB</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_SUB</MenuPref> 			<MenuOption>MENU_OPTION_CAM_VEH_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
@@ -2300,6 +2353,7 @@
 				<Item> <cTextId>MO_FPS_TPC</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_FPS_THIRD_PERSON_COVER</MenuPref>		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
         <Item> <cTextId>MO_FPS_VAC</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_FPS_VEH_AUTO_CENTER</MenuPref>		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
         <Item> <cTextId>MO_HOOD_CAMERA</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_HOOD_CAMERA</MenuPref>		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
+		<Item> <cTextId>MO_FPS_REL_CAM_DRIVEBY</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_FPS_RELATIVE_VEHICLE_CAMERA_DRIVEBY_AIMING</MenuPref>		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>		<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>MO_RDF</cTextId>		<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction>			<MenuUniqueIdHash>RESTORE_DEFAULTS_CAMERA</MenuUniqueIdHash> </Item>
 			</MenuItems>
 		</Item>
@@ -2848,6 +2902,7 @@
 				<Item> <MenuAction>MENU_OPTION_ACTION_FILL_CONTENT_FROM_SCRIPT</MenuAction> </Item>
 				<Item> <MenuAction>MENU_OPTION_ACTION_REFERENCE</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_HEADER_CORONA_LOBBY</MenuUniqueId></Item>
 				<Item> <MenuAction>MENU_OPTION_ACTION_REFERENCE</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_CORONA_INVITE</MenuUniqueId></Item>
+				<Item> <MenuAction>MENU_OPTION_ACTION_REFERENCE</MenuAction> <MenuUniqueId>MENU_UNIQUE_ID_MAP</MenuUniqueId></Item>
 			</MenuItems>
 			<ButtonList>
 				<ButtonPrompts>
@@ -2858,6 +2913,9 @@
 					<CMenuButton> <hButtonHash>HUD_CONTINUE</hButtonHash>		<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput>				<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, AUTOFILL_CONTINUE</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>HUD_INPUT85</hButtonHash>		<ButtonInput>INPUT_FRONTEND_X</ButtonInput>				<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, CORONA_MAP_AVAIL, *NONE*, AUTOFILL_CORONA</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>HUD_INPUT98</hButtonHash>		<ButtonInput>INPUT_FRONTEND_X</ButtonInput>				<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, CORONA_PLYS_AVAIL, *NONE*, AUTOFILL_CORONA</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>FM_COR_SHOW_BIGMAP</hButtonHash>	<ButtonInput>INPUT_FRONTEND_Y</ButtonInput>			<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, CORONA_BIGMAP_AVAIL, *NONE*</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>FM_COR_SHOW_BIGMAP</hButtonHash>	<ButtonInput>INPUT_FRONTEND_LS</ButtonInput>		<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, CORONA_BIGMAP_AVAIL_KM, *NONE*</Contexts> </CMenuButton>
+					
 					<CMenuButton> <hButtonHash>PM_DYNAMICSTRING</hButtonHash>	<RawButtonIcon>NOTHING</RawButtonIcon>				<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, CORONA_DISPLAY_TIMER, *NONE*, CORONA_DISPLAY_LAUNCH</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>PM_DYNAMICSTRING</hButtonHash>	<RawButtonIcon>NOTHING</RawButtonIcon>				<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, CORONA_DISPLAY_LAUNCH, *NONE*, CORONA_DISPLAY_TIMER</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>FM_COR_INC_T</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput>				<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, CORONA_EXTEND_TIME</Contexts> </CMenuButton>
@@ -3023,7 +3081,8 @@
 					<CMenuButton> <hButtonHash>IB_KICK</hButtonHash>			<ButtonInput>INPUT_FRONTEND_X</ButtonInput> <Contexts>*NONE*,IsLocalPlayer,IsKickForceHidden,*ALL*,IsInTransition,HasPlayers</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_BACK</hButtonHash> 		<ButtonInput>INPUT_FRONTEND_CANCEL</ButtonInput> </CMenuButton>
 					<CMenuButton> <hButtonHash>CM_MUTE</hButtonHash>			<ButtonInput>INPUT_FRONTEND_Y</ButtonInput>	<Contexts>*NONE*,IsLocalPlayer,MutedByOS,*ALL*,InLocalSession,HasPlayers</Contexts> </CMenuButton>
-          <CMenuButton> <hButtonHash>CM_SHOW_GAMER_CARD</hButtonHash> <ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput></CMenuButton>
+					<CMenuButton> <hButtonHash>CM_SHOW_GAMER_CARD</hButtonHash> <ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput>
+					<Contexts>*NONE*,NO_RESULTS</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>PM_DYNAMICSTRING</hButtonHash>	<RawButtonIcon>NOTHING</RawButtonIcon>				<Contexts>*ALL*, DISPLAY_CORONA_BUTTONS, CORONA_DISPLAY_TIMER, *NONE*, CORONA_DISPLAY_LAUNCH</Contexts> </CMenuButton>
         </ButtonPrompts>
 			</ButtonList>

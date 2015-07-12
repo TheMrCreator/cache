@@ -18,7 +18,7 @@
 						</Item>
 						<Item>
 							<PoolName>AttachmentExtension</PoolName>
-							<PoolSize value="348"/>
+							<PoolSize value="370"/>
 						</Item>
 						<Item>
 						  <PoolName>AudioHeap</PoolName>
@@ -87,7 +87,7 @@
 						</Item>
 						<Item>
 							<PoolName>CGameScriptResource</PoolName>
-							<PoolSize value="2850"/>
+							<PoolSize value="2875"/>
 						</Item>
 						<Item>
 							<PoolName>ClothStore</PoolName>
@@ -203,7 +203,7 @@
 						</Item>
 						<Item>
 							<PoolName>GamePlayerBroadcastDataHandler_Remote</PoolName>
-							<PoolSize value="1200"/>
+							<PoolSize value="1550"/>
 						</Item>
 						<Item>
 							<PoolName>InstanceBuffer</PoolName>
@@ -215,7 +215,7 @@
 						</Item>
 						<Item>
 							<PoolName>InteriorProxy</PoolName>
-							<PoolSize value="770"/>
+							<PoolSize value="850"/>
 						</Item>
 						<Item>
 							<PoolName>IplStore</PoolName>
@@ -275,11 +275,11 @@
 						</Item>
 						<Item>
 							<PoolName>Object</PoolName>
-							<PoolSize value="1600"/>
+							<PoolSize value="2000"/>
 						</Item>
 						<Item>
 							<PoolName>OcclusionInteriorInfo</PoolName>
-							<PoolSize value="50"/>
+							<PoolSize value="70"/>
 						</Item>
 						<Item>
 							<PoolName>OcclusionPathNode</PoolName>
@@ -395,7 +395,7 @@
 						</Item>
         		<Item>
 							<PoolName>HandlingData</PoolName>
-							<PoolSize value="600"/>
+							<PoolSize value="680"/>
 						</Item>    
 						<Item>
 							<!-- Size of the CWaypointRecording streaming module. -->
@@ -520,11 +520,11 @@
 						</Item>
 						<Item>
 							<PoolName>ActionTable_Definitions</PoolName>
-							<PoolSize value="299"/>
+							<PoolSize value="300"/>
 						</Item>
 						<Item>
 							<PoolName>ActionTable_Results</PoolName>
-							<PoolSize value="456"/>
+							<PoolSize value="462"/>
 						</Item>
 						<Item>
 							<PoolName>ActionTable_Impulses</PoolName>
@@ -782,7 +782,7 @@
 					<MaxWeaponModelInfos value="115"/>
 					<MaxExtraPedModelInfos value="100"/>
 					<MaxExtraVehicleModelInfos value="100"/>
-					<MaxExtraWeaponModelInfos value="100"/>
+					<MaxExtraWeaponModelInfos value="125"/>
 				</ConfigModelInfo>
 
 				<ConfigExtensions>
@@ -831,7 +831,7 @@
 					<RosScVersion value="11"/>
 					<SteamAppId value="271590"/>
 					<TitleDirectoryName>GTA V</TitleDirectoryName>
-					<MultiplayerSessionTemplateName>SessionTemplate</MultiplayerSessionTemplateName>
+					<MultiplayerSessionTemplateName>SsnTemplateOpen</MultiplayerSessionTemplateName>
 				</ConfigOnlineServices>
 
 				<ConfigUGCDescriptions>
@@ -967,7 +967,7 @@
 						<Item>
 							<StackName>SPECIAL_ABILITY</StackName>
 							<SizeOfStack value="1828"/>
-							<NumberOfStacksOfThisSize value="5"/>
+							<NumberOfStacksOfThisSize value="12"/>
 						</Item>
 						<Item>
 							<StackName>FRIEND</StackName>
@@ -986,7 +986,7 @@
 						</Item>
 						<Item>
 							<StackName>VEHICLE_SPAWN</StackName>
-							<SizeOfStack value="2556"/>
+							<SizeOfStack value="2812"/>
 							<NumberOfStacksOfThisSize value="1"/>
 						</Item>
 						<Item>
@@ -1017,7 +1017,7 @@
 						<Item>
 							<StackName>SCRIPT_XML</StackName>
 							<SizeOfStack value="8344"/>
-							<NumberOfStacksOfThisSize value="3"/>
+							<NumberOfStacksOfThisSize value="4"/>
 						</Item>
 						<Item>
 							<StackName>PROPERTY_INT</StackName>
@@ -1152,6 +1152,9 @@
 					<PhysicalStreamingBuffer value="2304"/>
 					<VirtualStreamingBuffer value="0"/>
 				</ConfigStreamingEngine>
+        <ConfigMediaTranscoding>
+          <TranscodingBuffer value="18432"/>
+        </ConfigMediaTranscoding>
         <Threads>
           <Item key="Update">
             <Priority>PRIO_HIGHEST</Priority>
@@ -1661,9 +1664,8 @@
           <Item key="NorthAudioUpdate">
             <Priority>PRIO_NORMAL</Priority>
           </Item>
-          <!-- CitizenFX change -->
           <Item key="RageNetSend">
-            <Priority>PRIO_NORMAL</Priority>
+            <Priority>PRIO_BELOW_NORMAL</Priority>
           </Item>
           <Item key="RageNetRecv">
             <Priority>PRIO_BELOW_NORMAL</Priority>
@@ -1740,7 +1742,7 @@
 						</Item>
 						<Item>
 							<ResourceTypeName>CHECKPOINT</ResourceTypeName>
-							<ExpectedMaximum value="32"/>
+							<ExpectedMaximum value="61"/>
 						</Item>
 						<Item>
 							<ResourceTypeName>TEXTURE_DICTIONARY</ResourceTypeName>
@@ -1772,7 +1774,7 @@
 						</Item>
 						<Item>
 							<ResourceTypeName>MODEL</ResourceTypeName>
-							<ExpectedMaximum value="120"/>
+							<ExpectedMaximum value="150"/>
 						</Item>
 						<Item>
 							<ResourceTypeName>RADAR_BLIP</ResourceTypeName>
@@ -1792,7 +1794,7 @@
 						</Item>
 						<Item>
 							<ResourceTypeName>MLO</ResourceTypeName>
-							<ExpectedMaximum value="5"/>
+							<ExpectedMaximum value="6"/>
 						</Item>
 						<Item>
 							<ResourceTypeName>RELATIONSHIP_GROUP</ResourceTypeName>
@@ -1820,7 +1822,7 @@
 						</Item>
 						<Item>
 							<ResourceTypeName>WEAPON_ASSET</ResourceTypeName>
-							<ExpectedMaximum value="45"/>
+							<ExpectedMaximum value="48"/>
 						</Item>
 						<Item>
 							<ResourceTypeName>VEHICLE_ASSET</ResourceTypeName>
@@ -1836,7 +1838,7 @@
 						</Item>
 						<Item>
 							<ResourceTypeName>SCENARIO_BLOCKING_AREA</ResourceTypeName>
-							<ExpectedMaximum value="27"/>
+							<ExpectedMaximum value="28"/>
 						</Item>
 						<Item>
 							<ResourceTypeName>BINK_MOVIE</ResourceTypeName>
