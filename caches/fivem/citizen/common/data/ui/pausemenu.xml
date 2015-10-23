@@ -346,7 +346,16 @@
 				<Item> <cTextId>MO_GFX_VHIGH</cTextId> </Item>
 			</MenuDisplayOptions>
 		</Item>
-    
+
+    <Item>
+			<MenuOption>MENU_OPTION_ROLL_YAW_PITCH</MenuOption>
+			
+			<MenuDisplayOptions>
+				<Item> <cTextId>MO_ROLLPITCH</cTextId> </Item>
+				<Item> <cTextId>MO_YAWPITCH</cTextId> </Item>
+			</MenuDisplayOptions>
+		</Item>
+
     <Item>
 			<MenuOption>MENU_OPTION_CAM_VEH_OFF</MenuOption>
 			
@@ -686,6 +695,7 @@
 			<CMenuButton> <hButtonHash>IB_SOCIALCLUB_UI</hButtonHash>	<ButtonInput>INPUT_FRONTEND_SELECT</ButtonInput> 					<Contexts>*ALL*,x64,		 *NONE*,MENU_OFF, NAVIGATING_CONTENT</Contexts> </CMenuButton>
 			<CMenuButton> <hButtonHash>IB_SHOWMENU</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> 						<Contexts>*ALL*,CAN_TOGGLE_MENU,MENU_OFF,*NONE*,		  NAVIGATING_CONTENT</Contexts> </CMenuButton>
 			<CMenuButton> <hButtonHash>IB_SELECT</hButtonHash>			<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> 					<Contexts>*NONE*,MENU_OFF,HIDE_ACCEPTBUTTON,HasContextMenu</Contexts> 					</CMenuButton>
+      <CMenuButton> <hButtonHash>IB_MORDEETS</hButtonHash>			<ButtonInput>INPUT_FRONTEND_X</ButtonInput> 					<Contexts>*ALL*,ON_VIDEO_TAB, SHOW_VIDEO_BUTTON</Contexts> 					</CMenuButton>
 			<CMenuButton> <hButtonHash>IB_OPTIONS</hButtonHash>			<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> 					<Contexts>*NONE*,MENU_OFF,HIDE_ACCEPTBUTTON,*ALL*,HasContextMenu</Contexts> 			</CMenuButton>
 			<CMenuButton> <hButtonHash>IB_BACK</hButtonHash> 			<ButtonInput>INPUT_FRONTEND_CANCEL</ButtonInput>  																											</CMenuButton>
 			<CMenuButton> <hButtonHash>HUD_INPUT10</hButtonHash>		<ButtonInput>INPUT_FRONTEND_Y</ButtonInput> 						<Contexts>*ALL*,DISPLAY_CAN_JOIN</Contexts> 											</CMenuButton>
@@ -1905,7 +1915,7 @@
 					<!--<CMenuButton> <hButtonHash>IB_NAVIGATE</hButtonHash>  <RawButtonIcon>ARROW_LEFTRIGHT</RawButtonIcon>	<Contexts>*NONE*, GALLERY_THUMBNAIL, GALLERY_EMPTY, *ALL*,NAVIGATING_CONTENT,GALLERY_MAXIMIZE</Contexts></CMenuButton>-->
 					
 					<!-- In multiple modes -->
-					<CMenuButton> <hButtonHash>IB_BACK</hButtonHash> 		<ButtonInput>INPUT_FRONTEND_CANCEL</ButtonInput> <Contexts>*NONE*,GALLERY_MAXIMIZE,*ALL*,NAVIGATING_CONTENT,*ANY*,GALLERY_THUMBNAIL,GALLERY_PLACE_TEXT,GALLERY_REVIEW_TEXT</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>IB_BACK</hButtonHash> 		<ButtonInput>INPUT_FRONTEND_CANCEL</ButtonInput> <Contexts>*NONE*,GALLERY_MAXIMIZE,*ALL*,NAVIGATING_CONTENT,*ANY*,GALLERY_THUMBNAIL,GALLERY_PLACE_TEXT,GALLERY_REVIEW_TEXT,GALLERY_PROFANITY_CHECK</Contexts> </CMenuButton>
 					
 					<!-- Thumbnail mode -->
 					<CMenuButton> <hButtonHash>IB_MAXIMIZE</hButtonHash>	<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> <Contexts>*NONE*, GALLERY_IMAGE_CORRUPTION, GALLERY_EMPTY, GALLERY_PLACE_TEXT, GALLERY_REVIEW_TEXT,GALLERY_FINALIZE_TEXT, *ALL*,NAVIGATING_CONTENT,GALLERY_THUMBNAIL</Contexts> </CMenuButton>
@@ -1925,12 +1935,11 @@
 					<CMenuButton> <hButtonHash>IB_PLACE</hButtonHash>	<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> <Contexts>*ALL*,GALLERY_PLACE_TEXT</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_RESIZE</hButtonHash>	<ButtonInputGroup>INPUTGROUP_FRONTEND_TRIGGERS</ButtonInputGroup> <Contexts>*ALL*,GALLERY_PLACE_TEXT</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_COLOR</hButtonHash>	<ButtonInputGroup>INPUTGROUP_FRONTEND_DPAD_LR</ButtonInputGroup> <Contexts>*ALL*,GALLERY_PLACE_TEXT</Contexts> </CMenuButton>
-					<CMenuButton> <hButtonHash>IB_FONT</hButtonHash>	<ButtonInputGroup>INPUTGROUP_FRONTEND_DPAD_UD</ButtonInputGroup> <Contexts>*ALL*,GALLERY_PLACE_TEXT</Contexts> </CMenuButton>
+					<CMenuButton> <hButtonHash>IB_FONT</hButtonHash>	<ButtonInputGroup>INPUTGROUP_FRONTEND_DPAD_UD</ButtonInputGroup> <Contexts>*ALL*,GALLERY_PLACE_TEXT,GALLERY_ALLOW_FONT_EDITS</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>IB_MOVE</hButtonHash>	<ButtonInputGroup>INPUTGROUP_FRONTEND_LSTICK_ALL</ButtonInputGroup> <Contexts>*ALL*,GALLERY_PLACE_TEXT</Contexts> </CMenuButton>
 					
 					<!-- Meme review mode -->
 					<CMenuButton> <hButtonHash>IB_SAVE</hButtonHash>	<ButtonInput>INPUT_FRONTEND_ACCEPT</ButtonInput> <Contexts>*ALL*,GALLERY_REVIEW_TEXT,*NONE*,GALLERY_PLACE_TEXT</Contexts> </CMenuButton>
-					<CMenuButton> <hButtonHash>IB_ADDDITIONAL_TEXT</hButtonHash>	<ButtonInput>INPUT_FRONTEND_X</ButtonInput> <Contexts>*NONE*,GALLERY_FINALIZE_TEXT,GALLERY_PLACE_TEXT,*ALL*,GALLERY_REVIEW_TEXT</Contexts> </CMenuButton>
 					
 					
 				</ButtonPrompts>
@@ -2262,10 +2271,10 @@
 				<Item> <cTextId>MO_RDF</cTextId>		<MenuAction>MENU_OPTION_ACTION_TRIGGER</MenuAction>			<MenuUniqueIdHash>RESTORE_DEFAULTS_VOICE_CHAT</MenuUniqueIdHash> </Item>
 			</MenuItems>
 		</Item>
-
-		<!--  ACTUAL SCREEN ID: 25 -->
+    
+    <!--  ACTUAL SCREEN ID: 25 -->
 		<Item>
-			<MenuScreen>MENU_UNIQUE_ID_SETTINGS_CONTROLS</MenuScreen>
+    <MenuScreen>MENU_UNIQUE_ID_SETTINGS_CONTROLS</MenuScreen>
 			<depth>2</depth>
 			<Flags>SF_NoClearRootColumns</Flags>
 			<ScrollBarFlags>Width_2</ScrollBarFlags>
@@ -2317,6 +2326,7 @@
     		<Item> <cTextId>MO_MSUBSENS</cTextId>		<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_SUB_SCALE</MenuPref>	<MenuOption>MENU_OPTION_SLIDER</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
 				<Item> <cTextId>MO_MOUSEFLYINV</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_INVERT_MOUSE_FLYING</MenuPref> 	<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>   <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,x64</Contexts></Item>
 				<Item> <cTextId>MO_MOUSESUBINV</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_INVERT_MOUSE_SUB</MenuPref> 		<MenuOption>MENU_OPTION_DISPLAY_ON_OFF</MenuOption>   <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,x64</Contexts></Item>
+				<Item> <cTextId>MO_MOUSEFLYSWAP</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_SWAP_ROLL_YAW_MOUSE_FLYING</MenuPref> 	<MenuOption>MENU_OPTION_ROLL_YAW_PITCH</MenuOption>   <MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> <Contexts>*ALL*,x64</Contexts></Item>
         <Item> <cTextId>MO_ACMBIKE</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_AUTOCENTER_BIKE</MenuPref>		<MenuOption>MENU_OPTION_SLIDER</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
         <Item> <cTextId>MO_ACMCAR</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_AUTOCENTER_CAR</MenuPref>		<MenuOption>MENU_OPTION_SLIDER</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
         <Item> <cTextId>MO_ACMPLANE</cTextId>	<MenuAction>MENU_OPTION_ACTION_PREF_CHANGE</MenuAction>		<MenuPref>PREF_MOUSE_AUTOCENTER_PLANE</MenuPref>		<MenuOption>MENU_OPTION_SLIDER</MenuOption>				<MenuUniqueId>MENU_UNIQUE_ID_SETTINGS_LIST</MenuUniqueId> </Item>
@@ -2728,6 +2738,7 @@
 					<CMenuButton> <hButtonHash>FACE_CCOL</hButtonHash>			<ButtonInputGroup>INPUTGROUP_FRONTEND_TRIGGERS</ButtonInputGroup>	<Contexts>*ALL*, CC_CHANGE_COLOUR</Contexts> </CMenuButton>
 					<CMenuButton> <hButtonHash>FACE_COPAC</hButtonHash>			<ButtonInputGroup>INPUTGROUP_FRONTEND_RSTICK_ALL</ButtonInputGroup>	<Contexts>*ALL*, CC_CHANGE_OPACITY</Contexts></CMenuButton>
 					<CMenuButton> <hButtonHash>FACE_COPAC_KM</hButtonHash>		<ButtonInputGroup>INPUTGROUP_CURSOR</ButtonInputGroup>				<Contexts>*ALL*, CC_CHANGE_OPACITY_MOUSE</Contexts></CMenuButton>
+					
 				</ButtonPrompts>
 			</ButtonList>
 
@@ -3548,14 +3559,14 @@
 		<Item>
 			<contextOption>SPECTATE_OTHER_SESSION</contextOption>
 			<text>CM_SPECTATE</text>
-			<displayCondition>*NONE*, IsLocalPlayer, JIPLocked, RemoteInTutorialSession, DisableSpectate, LocalInActivitySession, RemoteIsSpectating, *ALL*, PlayerIsSameTitleOnline, RemoteAllowsSpectating</displayCondition>
+			<displayCondition>*NONE*, IsLocalPlayer, JIPLocked, RemoteInTutorialSession, DisableSpectate, DisableSpectateScript, LocalInActivitySession, RemoteIsSpectating, *ALL*, PlayerIsSameTitleOnline, RemoteAllowsSpectating</displayCondition>
 <!--		<displayCondition>*ALL*,SHOULD_NEVER_MATCH</displayCondition>	-->
 		</Item>
 		
 		<Item>
 			<contextOption>SPECTATE_OTHER_SESSION_DISABLED</contextOption>
 			<text>CM_SPECTATE_DISABLED</text>
-			<displayCondition>*NONE*, IsLocalPlayer, JIPLocked, RemoteInTutorialSession, DisableSpectate, LocalInActivitySession, RemoteIsSpectating, RemoteAllowsSpectating, *ALL*, PlayerIsSameTitleOnline</displayCondition>
+			<displayCondition>*NONE*, IsLocalPlayer, JIPLocked, RemoteInTutorialSession, DisableSpectate, DisableSpectateScript, LocalInActivitySession, RemoteIsSpectating, RemoteAllowsSpectating, *ALL*, PlayerIsSameTitleOnline</displayCondition>
 			<bIsSelectable value="false"/>
 		</Item>
 		

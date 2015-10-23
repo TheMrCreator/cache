@@ -87,7 +87,7 @@
 						</Item>
 						<Item>
 							<PoolName>CGameScriptResource</PoolName>
-							<PoolSize value="2875"/>
+							<PoolSize value="2883"/>
 						</Item>
 						<Item>
 							<PoolName>ClothStore</PoolName>
@@ -199,7 +199,7 @@
 						</Item>
 						<Item>
 							<PoolName>FragmentStore</PoolName>
-							<PoolSize value="8200"/>
+							<PoolSize value="8400"/>
 						</Item>
 						<Item>
 							<PoolName>GamePlayerBroadcastDataHandler_Remote</PoolName>
@@ -215,7 +215,7 @@
 						</Item>
 						<Item>
 							<PoolName>InteriorProxy</PoolName>
-							<PoolSize value="850"/>
+							<PoolSize value="950"/>
 						</Item>
 						<Item>
 							<PoolName>IplStore</PoolName>
@@ -251,7 +251,7 @@
 						</Item>
 						<Item>
 							<PoolName>MapDataStore</PoolName>
-							<PoolSize value="8300"/>
+							<PoolSize value="8700"/>
 						</Item>
 						<Item>
 							<PoolName>MapTypesStore</PoolName>
@@ -424,7 +424,7 @@
 						</Item>
 						<Item>
 							<PoolName>atDScriptObjectNode</PoolName>
-							<PoolSize value="450"/>
+							<PoolSize value="500"/>
 						</Item>
 						<Item>
 							<PoolName>fwDynamicArchetypeComponent</PoolName>
@@ -520,11 +520,11 @@
 						</Item>
 						<Item>
 							<PoolName>ActionTable_Definitions</PoolName>
-							<PoolSize value="300"/>
+							<PoolSize value="304"/>
 						</Item>
 						<Item>
 							<PoolName>ActionTable_Results</PoolName>
-							<PoolSize value="462"/>
+							<PoolSize value="474"/>
 						</Item>
 						<Item>
 							<PoolName>ActionTable_Impulses</PoolName>
@@ -782,7 +782,7 @@
 					<MaxWeaponModelInfos value="115"/>
 					<MaxExtraPedModelInfos value="100"/>
 					<MaxExtraVehicleModelInfos value="100"/>
-					<MaxExtraWeaponModelInfos value="125"/>
+					<MaxExtraWeaponModelInfos value="148"/>
 				</ConfigModelInfo>
 
 				<ConfigExtensions>
@@ -1011,7 +1011,7 @@
 						</Item>
 						<Item>
 						  <StackName>INTERACTION_MENU</StackName>
-						  <SizeOfStack value="6004"/>
+						  <SizeOfStack value="8004"/>
 						  <NumberOfStacksOfThisSize value="1"/>
 						</Item>
 						<Item>
@@ -1051,7 +1051,7 @@
 						</Item>
 						<Item>
 							<StackName>MP_LAUNCH_SCRIPT</StackName>
-							<SizeOfStack value="20000"/>
+							<SizeOfStack value="21000"/>
 							<NumberOfStacksOfThisSize value="1"/>
 						</Item>
 						
@@ -1067,7 +1067,7 @@
 						</Item>
 						<Item>
 							<NameOfScriptTextLine>ScriptTextLinesOneSubstring</NameOfScriptTextLine>
-							<MaximumNumber value="100"/>
+							<MaximumNumber value="144"/>
 						</Item>
 						<Item>
 							<NameOfScriptTextLine>ScriptTextLinesFourSubstringsThreeNumbers</NameOfScriptTextLine>
@@ -1153,7 +1153,10 @@
 					<VirtualStreamingBuffer value="0"/>
 				</ConfigStreamingEngine>
         <ConfigMediaTranscoding>
-          <TranscodingBuffer value="18432"/>
+          <TranscodingSmallObjectBuffer value="4096"/>
+          <TranscodingSmallObjectMaxPointers value="6144"/>
+          <TranscodingBuffer value="24000"/>
+          <TranscodingMaxPointers value="256"/>
         </ConfigMediaTranscoding>
         <Threads>
           <Item key="Update">
@@ -1307,13 +1310,13 @@
 			</CpuAffinity>
           </Item>
           <Item key="RageNetSend">
-            <Priority>PRIO_BELOW_NORMAL</Priority>
+            <Priority>PRIO_NORMAL</Priority>
             <CpuAffinity>
                 <Core value="5"/>
 			</CpuAffinity>
           </Item>
           <Item key="RageNetRecv">
-            <Priority>PRIO_BELOW_NORMAL</Priority>
+            <Priority>PRIO_NORMAL</Priority>
             <CpuAffinity>
                 <Core value="5"/>
 			</CpuAffinity>
@@ -1665,10 +1668,10 @@
             <Priority>PRIO_NORMAL</Priority>
           </Item>
           <Item key="RageNetSend">
-            <Priority>PRIO_BELOW_NORMAL</Priority>
+            <Priority>PRIO_NORMAL</Priority>
           </Item>
           <Item key="RageNetRecv">
-            <Priority>PRIO_BELOW_NORMAL</Priority>
+            <Priority>PRIO_NORMAL</Priority>
           </Item>
           <Item key="RageVoiceChatWorker">
             <Priority>PRIO_BELOW_NORMAL</Priority>
@@ -1758,7 +1761,7 @@
 						</Item>
 						<Item>
 							<ResourceTypeName>FRAG_DICTIONARY</ResourceTypeName>
-							<ExpectedMaximum value="28"/>
+							<ExpectedMaximum value="32"/>
 						</Item>
 						<Item>
 							<ResourceTypeName>DRAWABLE</ResourceTypeName>
@@ -1774,7 +1777,7 @@
 						</Item>
 						<Item>
 							<ResourceTypeName>MODEL</ResourceTypeName>
-							<ExpectedMaximum value="150"/>
+							<ExpectedMaximum value="154"/>
 						</Item>
 						<Item>
 							<ResourceTypeName>RADAR_BLIP</ResourceTypeName>
