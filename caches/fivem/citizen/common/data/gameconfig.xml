@@ -74,6 +74,10 @@
 							<PoolSize value="13"/>
 						</Item>
 						<Item>
+							<PoolName>CGameScriptHandlerNetwork</PoolName>
+							<PoolSize value="300"/>
+						</Item>
+						<Item>
 							<PoolName>CTacticalAnalysis</PoolName>
 							<PoolSize value="3"/>
 						</Item>
