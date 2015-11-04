@@ -9643,6 +9643,10 @@ function GetPlayerShortSwitchState()
 	return _in(0x20F898A5D9782800, _r)
 end
 
+function GetPlayerServerId(player)
+	return _in(0x4d97bcc7, player, _r)
+end
+
 function GetPlayerRgbColour(player)
 	return _in(0xE902EF951DCE178F, player, _i, _i, _i)
 end
@@ -9713,6 +9717,10 @@ end
 
 function GetPlayerGroup(player)
 	return _in(0x0D127585F77030AF, player, _r)
+end
+
+function GetPlayerFromServerId(serverId)
+	return _in(0x344ea166, serverId, _r)
 end
 
 function GetPlayerCurrentStealthNoise(player)
