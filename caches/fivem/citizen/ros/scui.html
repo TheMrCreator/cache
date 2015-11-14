@@ -125,14 +125,19 @@
             top: 43%;
             margin-left: 17%;
             position: absolute;
+            height: 50px;
         }
 
         #subtitle
         {
-            display: inline-block;
+            display: block;
             color: #fff;
             font-family: "Roboto";
             text-shadow: 0px 0px 1px #666;
+            /* lazy fix for static page */
+            position: relative;
+            left: 70%;
+            bottom: 122%;
         }
 
         .logotype i
@@ -222,7 +227,8 @@
                 <a><i class="fa fa-road"></i> FiveM</a>
             </h1>
             <div id="subtitle">
-                Get yourself a new t20 - crash free!
+                Get yourself a new t20 - crash free!<br />
+                Or, not, if you get stuck on this "t20 menu".
             </div>
         </div>
     </div>
