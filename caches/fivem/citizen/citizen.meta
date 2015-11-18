@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CDataFileMgr__ContentsOfDataFileXml>
+<dataFiles>
+	<Item>
+		<filename>citizen:/streaming_surrogate.rpf</filename>
+		<fileType>RPF_FILE</fileType>
+		<contents>CONTENTS_VEHICLES</contents>
+	        <installPartition>PARTITION_2</installPartition>
+			<locked value="true"/>
+			<persistent value="true"/>
+			<overlay value="true"/>
+	</Item>
+</dataFiles>
+</CDataFileMgr__ContentsOfDataFileXml>
