@@ -352,3 +352,24 @@ setmetatable(exports, {
 		error('cannot set values on exports')
 	end
 })
+
+-- NUI callbacks
+function RegisterNUICallback(type, callback)
+	RegisterNuiCallbackType(type)
+
+	AddEventHandler('__cfx_nui:' .. type, function(body, resultCallback)
+		local status, err = pcall(function()
+			callback(body, resultCallback)
+		end)
+
+		if err then
+			Citizen.Trace("error during NUI callback " .. type .. ": " .. err .. "\n")
+		end
+	end)
+end
+
+local _sendNuiMessage = SendNuiMessage
+
+function SendNUIMessage(message)
+	_sendNuiMessage(json.encode(message))
+end

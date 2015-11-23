@@ -2943,6 +2943,10 @@ function SetTextColour(red, green, blue, alpha)
 	return _in(0xBE6B23FFA53FB442, red, green, blue, alpha)
 end
 
+function SetTextChatEnabled(enabled)
+	return _in(0x97b2f9f8, enabled, _r)
+end
+
 function SetTextCentre(align)
 	return _in(0xC02F4DBFB51D988B, align)
 end
@@ -4127,6 +4131,10 @@ function SetNumberOfParkedVehicles(value)
 	return _in(0xCAA15F13EBD417FF, value, _r)
 end
 
+function SetNuiFocus(hasFocus)
+	return _in(0x5b98ae30, hasFocus)
+end
+
 function SetNoLoadingScreen(toggle)
 	return _in(0x5262CC1995D07E09, toggle)
 end
@@ -5159,6 +5167,10 @@ function Settimera(value)
 	return _in(0xC1B1E9A034A63A62, value)
 end
 
+function SendNuiMessage(jsonString)
+	return _in(0x78608acb, jsonString, _r)
+end
+
 function ScInboxMessageGetUgcdata(p0)
 	return _in(0x69D82604A1A5A254, p0, _i, _r)
 end
@@ -5781,6 +5793,10 @@ end
 
 function RegisterObjectScriptBrain(scriptName, p1, p2, p3, p4, p5)
 	return _in(0x0BE84C318BA6EC22, scriptName, p1, p2, p3, p4, p5)
+end
+
+function RegisterNuiCallbackType(callbackType)
+	return _in(0xcd03cda9, callbackType)
 end
 
 function RegisterNamedRendertarget(p1)

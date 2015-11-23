@@ -22,7 +22,8 @@ iframe
 </style>
 <script type="text/javascript">
 // raw javascript ftfw
-window.citFrames = {}
+window.citFrames = {};
+window.focusStack = [];
 
 registerFrameFunction(function(msg, frameName, frameUrl)
 {
@@ -39,6 +40,7 @@ registerFrameFunction(function(msg, frameName, frameUrl)
 		frame.src = frameUrl;
 		
 		citFrames[frameName] = frame;
+		focusStack.push(frameName);
 		
 		document.body.appendChild(frame);
 	}
@@ -48,6 +50,8 @@ registerFrameFunction(function(msg, frameName, frameUrl)
 		{
 			return;
 		}
+
+		focusStack = focusStack.filter(function(val) { return val !== frameName; });
 		
 		// bye!
 		document.body.removeChild(citFrames[frameName]);
@@ -64,6 +68,29 @@ registerPollFunction(function(frameName)
 	var frame = citFrames[frameName];
 	frame.contentWindow.postMessage({ type: 'poll' }, '*');
 });
+
+focusFrame = function(frameName)
+{
+	// rearrange the focus stack
+	focusStack = focusStack.filter(function(val) { return val !== frameName; });
+	focusStack.push(frameName);
+
+	// iterate the array
+	for (var i = 0; i < focusStack.length; i++)
+	{
+		var thisFrame = citFrames[focusStack[i]];
+		thisFrame.style.zIndex = i.toString();
+	}
+
+	// and focus the frame itself
+	citFrames[frameName].focus();
+};
+
+blurFrame = function(frameName)
+{
+	// remove focus
+	citFrames[frameName].blur();
+};
 </script>
 </head>
 <body>
