@@ -7,24 +7,12 @@ function World3dToScreen2d(x3d, y3d, z3d)
 	return _in(0x34E82F05DF2974F5, x3d, y3d, z3d, _f, _f, _r)
 end
 
-function UnloadMpDlcMaps()
-	return _in(0xD7C10C4A637992C9)
-end
-
 function TransitionToBlurred(transitionTime)
 	return _in(0xA328A24AAA6B7FDC, transitionTime, _r)
 end
 
 function TransitionFromBlurred(transitionTime)
 	return _in(0xEFACC8AEF94430D5, transitionTime, _r)
-end
-
-function ToggleSnowVehicleTracks(toggle)
-	return _in(0x4CC7F0FEA5283FE0, toggle)
-end
-
-function ToggleSnowPedFootTracks(toggle)
-	return _in(0xAEEDAD1420C65CC0, toggle)
 end
 
 function TaskVehicleFollow(driver, vehicle, targetEntity, drivingStyle, speed, minDistance)
@@ -37,6 +25,14 @@ end
 
 function TaskGetOffBoat(p0, p1)
 	return _in(0x9C00E77AF14B2DFF, p0, p1)
+end
+
+function SubtractBFromAAndCheckIfNegative(a, b)
+	return _in(0xCB2CF5148012C8D0, a, b, _r)
+end
+
+function SubtractAFromBAndCheckIfNegative(a, b)
+	return _in(0xDE350F8651E4346C, a, b, _r)
 end
 
 function StopScreenEffect(effectName)
@@ -135,8 +131,12 @@ function SetVehicleEnginePowerMultiplier(vehicle, value)
 	return _in(0x93A3996368C94158, vehicle, value)
 end
 
-function SetVehicleDoorBreakable(p0, doorIndex, isBreakable)
-	return _in(0x2FA133A4A9D37ED8, p0, doorIndex, isBreakable)
+function SetVehicleDoorBreakable(vehicle, doorIndex, isBreakable)
+	return _in(0x2FA133A4A9D37ED8, vehicle, doorIndex, isBreakable)
+end
+
+function SetUnkMapFlag(flag)
+	return _in(0xC5F0A8EBD3F361CE, flag)
 end
 
 function SetTowTruckCraneRaised(towTruck, state)
@@ -163,6 +163,10 @@ function SetTextComponentFormat(inputType)
 	return _in(0x8509B634FBE7DA11, inputType)
 end
 
+function SetTextChatUnk(p0)
+	return _in(0x1DB21A44B09E8BA3, p0)
+end
+
 function SetStreamedScriptAsNoLongerNeeded(scriptHash)
 	return _in(0xC5BC038960E9DB27, scriptHash)
 end
@@ -175,8 +179,8 @@ function SetScreenDrawPosition(x, y)
 	return _in(0xB8A850F20A067EB6, x, y)
 end
 
-function SetRainFxIntensity(p0)
-	return _in(0x643E26EA6E024D92, p0)
+function SetRainFxIntensity(intensity)
+	return _in(0x643E26EA6E024D92, intensity)
 end
 
 function SetRadarZoomLevelThisFrame(zoomLevel)
@@ -197,6 +201,10 @@ end
 
 function SetPlayerBlipPositionThisFrame(x, y)
 	return _in(0x77E2DD177910E1CF, x, y)
+end
+
+function SetPhoneLean(Toggle)
+	return _in(0x44E44169EF70138E, Toggle)
 end
 
 function SetPedHeadOverlayColor(ped, overlayID, colorType, colorID, secondColorID)
@@ -251,6 +259,14 @@ function SetGameplayCamRawPitch(pitch)
 	return _in(0x759E13EBC1C15C5A, pitch)
 end
 
+function SetForceVehicleTrails(enabled)
+	return _in(0x4CC7F0FEA5283FE0, enabled)
+end
+
+function SetForcePedFootstepsTracks(enabled)
+	return _in(0xAEEDAD1420C65CC0, enabled)
+end
+
 function SetFocusArea(x, y, z, p3, p4, p5)
 	return _in(0xBB7454BAFF08FE25, x, y, z, p3, p4, p5)
 end
@@ -283,12 +299,12 @@ function SetBlackout(enable)
 	return _in(0x1268615ACE24D504, enable)
 end
 
-function ScGetNickname()
-	return _in(0x198D161F458ECC7F, _r, _s)
+function SetBikeLeanAngle(vehicle, x, y)
+	return _in(0x9CFA4896C3A53CBB, vehicle, x, y)
 end
 
-function ReturnZero2()
-	return _in(0xEF7D17BC6C85264C, _r)
+function ScGetNickname()
+	return _in(0x198D161F458ECC7F, _r, _s)
 end
 
 function ReturnZero()
@@ -311,8 +327,8 @@ function RequestScaleformMovie3(scaleformName)
 	return _in(0xBD06C611BB9048C2, scaleformName, _r)
 end
 
-function RequestScaleformMovie2(scaleformName)
-	return _in(0xC514489CFB8AF806, scaleformName, _r)
+function RequestAdditionalText_2(gxt, slot)
+	return _in(0x6009F9F1AE90D8A6, gxt, slot)
 end
 
 function RemoveNotification(handle)
@@ -431,6 +447,10 @@ function ObjectValueAddArray(key)
 	return _in(0x5B11728527CA6E5F, _i, key)
 end
 
+function Nullify(unused)
+	return _in(0x46E2B844905BC5F0, _i, unused, _r)
+end
+
 function NetworkShopGetPrice(hash, hash2, p2)
 	return _in(0xC27009422FCCA88D, hash, hash2, p2, _r)
 end
@@ -451,12 +471,20 @@ function NetworkPlayerGetUserId(player)
 	return _in(0x4927FC39CD0869A0, player, _i, _r, _s)
 end
 
+function NetworkIsTextChatActive()
+	return _in(0x5FCF4D7069B09026, _r)
+end
+
 function NetworkGetNumParticipantsHost()
 	return _in(0xA6C90FBC38E395EE, _r)
 end
 
 function NetworkGetFriendName(friendIndex)
 	return _in(0x4164F227D052E293, friendIndex, _r, _s)
+end
+
+function MoveFinger(p0)
+	return _in(0x95C9E72F3D7DEC9B, p0)
 end
 
 function MaxRadioStationIndex()
@@ -469,6 +497,10 @@ end
 
 function LoadUgcFile(filename)
 	return _in(0xC5238C011AF405E4, filename, _r)
+end
+
+function LoadSpDlcMaps()
+	return _in(0xD7C10C4A637992C9)
 end
 
 function LoadMpDlcMaps()
@@ -497,6 +529,10 @@ end
 
 function IsThisModelASubmersible(model)
 	return _in(0x9537097412CF75FE, model, _r)
+end
+
+function IsTextChatActive()
+	return _in(0xB118AF58B5F332A1, _r)
 end
 
 function IsSocialclubBanned()
@@ -763,6 +799,14 @@ function GetGameVersion()
 	return _in(0xFCA9373EF340AC0A, _r, _s)
 end
 
+function GetGameplayCamZoom()
+	return _in(0x7EC52CC40597D170, _r, _rf)
+end
+
+function GetGameplayCamRot(p0)
+	return _in(0x5B4E4C817FCC2DFB, p0, _r, _rv)
+end
+
 function GetGameplayCamCoords()
 	return _in(0xA200EB1EE790F448, _r, _rv)
 end
@@ -779,8 +823,12 @@ function GetEntityPopulationType(entity)
 	return _in(0xF6F5161F4534EDFF, entity, _r)
 end
 
-function GetBroadcastFinshedLosSound(b)
-	return _in(0xB0C56BD3D808D863, b)
+function GetDateAndTimeFromUnixEpoch(unixEpoch)
+	return _in(0xAC97AF97FA68E5D5, unixEpoch, _i)
+end
+
+function GetBroadcastFinshedLosSound(p0)
+	return _in(0xB0C56BD3D808D863, p0)
 end
 
 function GetBoatAnchor(vehicle)
@@ -793,6 +841,10 @@ end
 
 function GetAnimDuration(animDict, animation)
 	return _in(0xFEDDF04D62B8D790, animDict, animation, _r, _rf)
+end
+
+function FormatTime(time)
+	return _in(0x9E23B1777A927DAD, time, _r, _s)
 end
 
 function ForceSocialClubUpdate()
@@ -831,12 +883,16 @@ function DrawSpotLightWithShadow(x, y, z, dirVectorX, dirVectorY, dirVectorZ, r,
 	return _in(0x5BCA583A583194DB, x, y, z, dirVectorX, dirVectorY, dirVectorZ, r, g, b, distance, brightness, roundness, radius, fadeout, shadow)
 end
 
-function DrawScaleformMovieDefault(scaleform, r, g, b, a)
-	return _in(0x0DF606929C105BE1, scaleform, r, g, b, a)
+function DrawNotification_4(blink, p1)
+	return _in(0xF020C96915705B3A, blink, p1, _r)
 end
 
-function DrawNotification2(p0, p1)
-	return _in(0xF020C96915705B3A, p0, p1, _r)
+function DrawNotification_3(blink, p1)
+	return _in(0x378E809BF61EC840, blink, p1, _r)
+end
+
+function DrawNotification_2(blink, p1)
+	return _in(0x44FA03975424A0EE, blink, p1, _r)
 end
 
 function DrawNotification(blink, p1)
@@ -947,6 +1003,10 @@ function ArrayValueGetType(arrayIndex)
 	return _in(0x3A0014ADB172A3C5, _i, arrayIndex, _r)
 end
 
+function ArrayValueGetString(arrayIndex)
+	return _in(0xD3F2FFEB8D836F52, _i, arrayIndex, _r, _s)
+end
+
 function ArrayValueGetSize()
 	return _in(0x065DB281590CEA2D, _i, _r)
 end
@@ -957,6 +1017,10 @@ end
 
 function ArrayValueGetInteger(arrayIndex)
 	return _in(0x3E5AE19425CD74BE, _i, arrayIndex, _r)
+end
+
+function ArrayValueGetFloat(arrayIndex)
+	return _in(0xC0C527B525D7CFB5, _i, arrayIndex, _r, _rf)
 end
 
 function ArrayValueGetBoolean(arrayIndex)
@@ -985,6 +1049,10 @@ end
 
 function ArrayValueAddBoolean(value)
 	return _in(0xF8B0F5A43E928C76, _i, value)
+end
+
+function AreIntegersEqual(a, b)
+	return _in(0xF5BC95857BD6D512, a, b, _r)
 end
 
 function AreAllVehicleWindowsIntact(vehicle)
@@ -1023,8 +1091,12 @@ function AddClanDecalToVehicle(vehicle, ped, boneIndex, x1, x2, x3, y1, y2, y3, 
 	return _in(0x428BDCB9DA58DA53, vehicle, ped, boneIndex, x1, x2, x3, y1, y2, y3, z1, z2, z3, scale, p13, alpha, _r)
 end
 
-function WouldEntityBeOccluded(model, x, y, z, p4)
-	return _in(0xEE5D2A122E09EC42, model, x, y, z, p4, _r)
+function AbortTextChat()
+	return _in(0x1AC8F4AD40E22127)
+end
+
+function WouldEntityBeOccluded(entity, x, y, z, p4)
+	return _in(0xEE5D2A122E09EC42, entity, x, y, z, p4, _r)
 end
 
 function WaypointRecordingGetSpeedAtPoint(p1)
@@ -1167,8 +1239,8 @@ function UseSirenAsHorn(p0, p1)
 	return _in(0xFA932DE350266EF8, p0, p1)
 end
 
-function UsePlayerColourInsteadOfTeamColour(p0)
-	return _in(0x5FFE9B4144F9712F, p0)
+function UsePlayerColourInsteadOfTeamColour(toggle)
+	return _in(0x5FFE9B4144F9712F, toggle)
 end
 
 function UpdateTaskSweepAimPosition(p0, p1, p2, p3)
@@ -1339,8 +1411,8 @@ function TaskWanderStandard(ped, p1, p2)
 	return _in(0xBB9CE077274F6A1B, ped, p1, p2)
 end
 
-function TaskWanderInArea(p0, p1, p2, p3, p4, p5, p6)
-	return _in(0xE054346CA3A0F315, p0, p1, p2, p3, p4, p5, p6)
+function TaskWanderInArea(ped, x, y, z, radius, minimalLenght, timeBetweenWalks)
+	return _in(0xE054346CA3A0F315, ped, x, y, z, radius, minimalLenght, timeBetweenWalks)
 end
 
 function TaskVehicleTempAction(p0, p1, p2, p3)
@@ -1611,16 +1683,16 @@ function TaskPerformSequence(ped, taskSequence)
 	return _in(0x5ABA3986D90D8A3B, ped, taskSequence, _r)
 end
 
-function TaskPedSlideToCoordHdgRate(p0, p1, p2, p3, p4, p5, p6)
-	return _in(0x5A4A6A6D3DC64F52, p0, p1, p2, p3, p4, p5, p6)
+function TaskPedSlideToCoordHdgRate(ped, x, y, z, heading, p5, p6)
+	return _in(0x5A4A6A6D3DC64F52, ped, x, y, z, heading, p5, p6)
 end
 
 function TaskPedSlideToCoord(ped, x, y, z, heading, p5)
 	return _in(0xD04FE6765D990A06, ped, x, y, z, heading, p5)
 end
 
-function TaskPause(ped, p1)
-	return _in(0xE73A266DB0CA9042, ped, p1)
+function TaskPause(ped, ms)
+	return _in(0xE73A266DB0CA9042, ped, ms)
 end
 
 function TaskPatrol(ped, p1, p2, p3, p4)
@@ -1643,8 +1715,8 @@ function TaskLookAtEntity(pedHandle, lookAt, duration, unknown1, unknown2)
 	return _in(0x69F4BE8C8CC4796C, pedHandle, lookAt, duration, unknown1, unknown2, _r)
 end
 
-function TaskLookAtCoord(p0, p1, p2, p3, p4, p5, p6)
-	return _in(0x6FA46612594F7973, p0, p1, p2, p3, p4, p5, p6)
+function TaskLookAtCoord(entity, x, y, z, duration, p5, p6)
+	return _in(0x6FA46612594F7973, entity, x, y, z, duration, p5, p6)
 end
 
 function TaskLeaveVehicle(ped, vehicle, flags)
@@ -1831,8 +1903,8 @@ function TaskChatToPed(ped, target, p2, p3, p4, p5, p6, p7)
 	return _in(0x8C338E0263E4FD19, ped, target, p2, p3, p4, p5, p6, p7)
 end
 
-function TaskBoatMission(p0, p1, p2, p3, x, y, z, p7, speed, p9, p10, p11)
-	return _in(0x15C86013127CE63F, p0, p1, p2, p3, x, y, z, p7, speed, p9, p10, p11)
+function TaskBoatMission(pedDriver, boat, p2, p3, x, y, z, p7, maxSpeed, p9, p10, p11)
+	return _in(0x15C86013127CE63F, pedDriver, boat, p2, p3, x, y, z, p7, maxSpeed, p9, p10, p11)
 end
 
 function TaskArrestPed(ped, target)
@@ -2343,8 +2415,8 @@ function SmashVehicleWindow(vehicle, index)
 	return _in(0x9E5B5E4D2CCD2259, vehicle, index, _r)
 end
 
-function SlideObject(p0, p1, p2, p3, p4, p5, p6, p7)
-	return _in(0x2FDFF4107B8C1147, p0, p1, p2, p3, p4, p5, p6, p7, _r)
+function SlideObject(object, toX, toY, toZ, speedX, speedY, speedZ, collisionCheck)
+	return _in(0x2FDFF4107B8C1147, object, toX, toY, toZ, speedX, speedY, speedZ, collisionCheck, _r)
 end
 
 function SkipToNextScriptedConversationLine()
@@ -2423,8 +2495,8 @@ function SetWindSpeed(speed)
 	return _in(0xEE09ECEDBABE47FC, speed)
 end
 
-function SetWindDirection(p0)
-	return _in(0xEB0F4468467B4528, p0)
+function SetWindDirection(direction)
+	return _in(0xEB0F4468467B4528, direction)
 end
 
 function SetWind(p0)
@@ -2547,16 +2619,16 @@ function SetVehicleReduceGrip(vehicle, toggle)
 	return _in(0x222FF6A823D122E2, vehicle, toggle)
 end
 
-function SetVehicleRadioLoud(p0, p1)
-	return _in(0xBB6F1CAEC68B0BCE, p0, p1, _r)
+function SetVehicleRadioLoud(vehicle, toggle)
+	return _in(0xBB6F1CAEC68B0BCE, vehicle, toggle)
 end
 
 function SetVehicleRadioEnabled(vehicle, toggle)
 	return _in(0x3B988190C0AA6C0B, vehicle, toggle)
 end
 
-function SetVehicleProvidesCover(p0, p1)
-	return _in(0x5AFEEDD9BB2899D7, p0, p1)
+function SetVehicleProvidesCover(vehicle, toggle)
+	return _in(0x5AFEEDD9BB2899D7, vehicle, toggle)
 end
 
 function SetVehiclePopulationBudget(p0)
@@ -2691,8 +2763,8 @@ function SetVehicleExtra(vehicle, extraId, toggle)
 	return _in(0x7EE3A3C5E4A40CC9, vehicle, extraId, toggle)
 end
 
-function SetVehicleExplodesOnHighExplosionDamage(p0, p1)
-	return _in(0x71B0892EC081D60A, p0, p1)
+function SetVehicleExplodesOnHighExplosionDamage(vehicle, toggle)
+	return _in(0x71B0892EC081D60A, vehicle, toggle)
 end
 
 function SetVehicleEngineOn(vehicle, value, instantly)
@@ -2999,8 +3071,8 @@ function SetStreamedTextureDictAsNoLongerNeeded(textureDict)
 	return _in(0xBE2CACCF5A8AA805, textureDict)
 end
 
-function SetStoreEnabled(p0)
-	return _in(0x9641A9FF718E9C5E, p0)
+function SetStoreEnabled(toggle)
+	return _in(0x9641A9FF718E9C5E, toggle)
 end
 
 function SetStaticEmitterEnabled(p1)
@@ -3067,6 +3139,10 @@ function SetScenarioGroupEnabled(p1)
 	return _in(0x02C8E5B49848664E, _i, p1)
 end
 
+function SetScaleformMovieToUseSystemTime(p0, p1)
+	return _in(0x6D8EB211944DCE08, p0, p1)
+end
+
 function SetScaleformMovieAsNoLongerNeeded()
 	return _in(0x1D132D614DD86811, _i)
 end
@@ -3099,8 +3175,8 @@ function SetRoadsBackToOriginal(p0, p1, p2, p3, p4, p5)
 	return _in(0x1EE7063B80FFC77C, p0, p1, p2, p3, p4, p5)
 end
 
-function SetRenderTrainAsDerailed(p0, p1)
-	return _in(0x317B11A312DF5534, p0, p1)
+function SetRenderTrainAsDerailed(train, toggle)
+	return _in(0x317B11A312DF5534, train, toggle)
 end
 
 function SetRelationshipBetweenGroups(relationship, group1, group2)
@@ -3147,8 +3223,8 @@ function SetRadioToStationName(radioStation)
 	return _in(0xC69EDA28699D5107, radioStation, _r)
 end
 
-function SetRadioToStationIndex(p0)
-	return _in(0xA619B168B8A8570F, p0)
+function SetRadioToStationIndex(radioStation)
+	return _in(0xA619B168B8A8570F, radioStation)
 end
 
 function SetRadioAutoUnfreeze(p0)
@@ -3364,7 +3440,7 @@ function SetPlayerCanDoDriveBy(player, toggle)
 end
 
 function SetPlayerCanBeHassledByGangs(player, toggle)
-	return _in(0xD5E460AD7020A246, player, toggle, _r)
+	return _in(0xD5E460AD7020A246, player, toggle)
 end
 
 function SetPlayerAngry(player, IsAngry)
@@ -3535,8 +3611,8 @@ function SetPedRandomProps(ped)
 	return _in(0xC44AA05345C992C6, ped)
 end
 
-function SetPedRandomComponentVariation(ped, toggle)
-	return _in(0xC8A9481A01E63C28, ped, toggle)
+function SetPedRandomComponentVariation(ped, p1)
+	return _in(0xC8A9481A01E63C28, ped, p1)
 end
 
 function SetPedRagdollOnCollision(ped, toggle)
@@ -3739,8 +3815,8 @@ function SetPedGetOutUpsideDownVehicle(ped, toggle)
 	return _in(0xBC0ED94165A48BC2, ped, toggle)
 end
 
-function SetPedGestureGroup(p0)
-	return _in(0xDDF803377F94AAA8, p0, _i)
+function SetPedGestureGroup(ped)
+	return _in(0xDDF803377F94AAA8, ped, _i)
 end
 
 function SetPedGeneratesDeadBodyEvents(ped, toggle)
@@ -3783,8 +3859,8 @@ function SetPedDropsWeapon(ped)
 	return _in(0x6B7513D9966FBEC0, ped)
 end
 
-function SetPedDropsInventoryWeapon(p0, p1, p2, p3, p4, p5)
-	return _in(0x208A1888007FC0E6, p0, p1, p2, p3, p4, p5)
+function SetPedDropsInventoryWeapon(ped, p1, p2, p3, p4, p5)
+	return _in(0x208A1888007FC0E6, ped, p1, p2, p3, p4, p5)
 end
 
 function SetPedDriveByClipsetOverride(ped, clipset)
@@ -4059,6 +4135,10 @@ function SetPauseMenuActive(p0)
 	return _in(0xDF47FC56C71569CF, p0)
 end
 
+function SetParticleFxShootoutBoat(p0)
+	return _in(0x96EF97DAEB89BEF5, p0)
+end
+
 function SetParticleFxNonLoopedColour(r, g, b)
 	return _in(0x26143A59EF48B262, r, g, b)
 end
@@ -4091,6 +4171,10 @@ function SetParticleFxCamInsideVehicle(p0)
 	return _in(0xEEC4047028426510, p0)
 end
 
+function SetParticleFxCamInsideNonplayerVehicle(p0, p1)
+	return _in(0xACEE6F360FC1F6B6, p0, p1)
+end
+
 function SetParticleFxBloodScale(p0)
 	return _in(0x5F6DF3D92271E8A1, p0)
 end
@@ -4107,8 +4191,8 @@ function SetParachuteTaskTarget(ped, x, y, z)
 	return _in(0xC313379AF0FCEDA7, ped, x, y, z)
 end
 
-function SetPadShake(p0, p1, p2)
-	return _in(0x48B3886C1358D0D5, p0, p1, p2)
+function SetPadShake(p0, duration, frequency)
+	return _in(0x48B3886C1358D0D5, p0, duration, frequency)
 end
 
 function SetOverrideWeather(weatherType)
@@ -4148,7 +4232,7 @@ function SetNoiseoveride(p0)
 end
 
 function SetNightvision(Toggle)
-	return _in(0x18F621F7A5B1F85D, Toggle, _r)
+	return _in(0x18F621F7A5B1F85D, Toggle)
 end
 
 function SetNextDesiredMoveState(p0)
@@ -4192,7 +4276,7 @@ function SetModelAsNoLongerNeeded(model)
 end
 
 function SetMobileRadioEnabledDuringGameplay(Toggle)
-	return _in(0x1098355A16064BB3, Toggle, _r)
+	return _in(0x1098355A16064BB3, Toggle)
 end
 
 function SetMobilePhoneScale(scale)
@@ -4223,8 +4307,8 @@ function SetMissionName(p0)
 	return _in(0x5F28ECF5FC84772F, p0, _i)
 end
 
-function SetMissionFlag(p0)
-	return _in(0xC4301E5121A0ED73, p0)
+function SetMissionFlag(toggle)
+	return _in(0xC4301E5121A0ED73, toggle)
 end
 
 function SetMinimapComponent(p0, p1)
@@ -4499,8 +4583,8 @@ function SetEntityVelocity(entity, x, y, z)
 	return _in(0x1C99BB7B6E96D16F, entity, x, y, z)
 end
 
-function SetEntityTrafficlightOverride(entity, toggle)
-	return _in(0x57C5DB656185EAC4, entity, toggle)
+function SetEntityTrafficlightOverride(entity, state)
+	return _in(0x57C5DB656185EAC4, entity, state)
 end
 
 function SetEntityRotation(entity, pitch, roll, yaw, p4, p5)
@@ -4551,12 +4635,12 @@ function SetEntityLodDist(entity, distance)
 	return _in(0x5927F96A78577363, entity, distance)
 end
 
-function SetEntityLocallyVisible(p0)
-	return _in(0x241E289B5C059EDC, p0)
+function SetEntityLocallyVisible(entity)
+	return _in(0x241E289B5C059EDC, entity)
 end
 
-function SetEntityLocallyInvisible(p0)
-	return _in(0xE135A9FF3F5D05D8, p0)
+function SetEntityLocallyInvisible(entity)
+	return _in(0xE135A9FF3F5D05D8, entity)
 end
 
 function SetEntityLoadCollisionFlag(entity, toggle)
@@ -4835,8 +4919,8 @@ function SetCanResprayVehicle(vehicle, state)
 	return _in(0x52BBA29D5EC69356, vehicle, state)
 end
 
-function SetCanAttackFriendly(playerPed, toggle, p2)
-	return _in(0xB3B1CB349FF9C75D, playerPed, toggle, p2)
+function SetCanAttackFriendly(ped, toggle, p2)
+	return _in(0xB3B1CB349FF9C75D, ped, toggle, p2)
 end
 
 function SetCamUseShallowDofMode(cam, toggle)
@@ -4951,8 +5035,8 @@ function SetBlipScale(blip, scale)
 	return _in(0xD38744167B2FA257, blip, scale)
 end
 
-function SetBlipRouteColour(p0, p1)
-	return _in(0x837155CD2F63DA09, p0, p1)
+function SetBlipRouteColour(blip, colour)
+	return _in(0x837155CD2F63DA09, blip, colour)
 end
 
 function SetBlipRoute(blip, enabled)
@@ -5255,8 +5339,8 @@ function RestartScriptedConversation()
 	return _in(0x9AEB285D1818C9AC)
 end
 
-function RestartFrontendMenu(p0, p1)
-	return _in(0x10706DC6AD2D49C0, p0, p1)
+function RestartFrontendMenu(menuHash, p1)
+	return _in(0x10706DC6AD2D49C0, menuHash, p1)
 end
 
 function RespondingAsTemp(p0)
@@ -5403,8 +5487,8 @@ function RequestVehicleHighDetailModel(p0)
 	return _in(0xA6E9FDCB2C76785E, p0)
 end
 
-function RequestVehicleAsset(VehicleHash, p1)
-	return _in(0x81A15811460FAB3A, VehicleHash, p1, _r)
+function RequestVehicleAsset(VehicleHash, vehicleAsset)
+	return _in(0x81A15811460FAB3A, VehicleHash, vehicleAsset)
 end
 
 function RequestStreamedTextureDict(textureDict, toggle)
@@ -5423,6 +5507,10 @@ function RequestScript(scriptName)
 	return _in(0x6EB5F71AA68F2E8E, scriptName)
 end
 
+function RequestScaleformMovieInstance(scaleformName)
+	return _in(0xC514489CFB8AF806, scaleformName, _r)
+end
+
 function RequestScaleformMovie(scaleformName)
 	return _in(0x11FE353CF9733E6F, scaleformName, _r)
 end
@@ -5439,8 +5527,8 @@ function RequestModel(model)
 	return _in(0x963D27A58DF860AC, model)
 end
 
-function RequestMissionAudioBank(p1)
-	return _in(0x7345BDD95E62E0F2, _i, p1, _r)
+function RequestMissionAudioBank(p0, p1)
+	return _in(0x7345BDD95E62E0F2, p0, p1, _r)
 end
 
 function RequestIpl(iplName)
@@ -5471,8 +5559,8 @@ function RequestAnimDict(animDict)
 	return _in(0xD3BD40951412FEF6, animDict)
 end
 
-function RequestAmbientAudioBank(p1)
-	return _in(0xFE02FFBED8CA9D99, _i, p1, _r)
+function RequestAmbientAudioBank(p0, p1)
+	return _in(0xFE02FFBED8CA9D99, p0, p1, _r)
 end
 
 function RequestAdditionalText(gxt, slot)
@@ -5640,7 +5728,7 @@ function RemoveModelHide(p0, p1, p2, p3, p4, p5)
 end
 
 function RemoveIpl(iplName)
-	return _in(0xEE6C5AD3ECE0A82D, iplName, _r)
+	return _in(0xEE6C5AD3ECE0A82D, iplName)
 end
 
 function RemoveGroup(groupId)
@@ -5743,8 +5831,8 @@ function ReleasePreloadMods(p0)
 	return _in(0x445D79F995508307, p0)
 end
 
-function ReleaseNamedScriptAudioBank()
-	return _in(0x77ED170667F50170, _i)
+function ReleaseNamedScriptAudioBank(audioBank)
+	return _in(0x77ED170667F50170, audioBank)
 end
 
 function ReleaseNamedRendertarget()
@@ -6291,8 +6379,8 @@ function NetworkSetVoiceChannel(p0)
 	return _in(0xEF6212C2EFEF1A23, p0)
 end
 
-function NetworkSetVoiceActive(p0)
-	return _in(0xBABEC9E69A91C57B, p0)
+function NetworkSetVoiceActive(toggle)
+	return _in(0xBABEC9E69A91C57B, toggle)
 end
 
 function NetworkSetTransitionCreatorHandle()
@@ -6303,8 +6391,8 @@ function NetworkSetThisScriptIsNetworkScript(p0, p1, p2)
 	return _in(0x1CA59E306ECB80A5, p0, p1, p2)
 end
 
-function NetworkSetTeamOnlyChat(p0)
-	return _in(0xD5B4883AC32F24C3, p0)
+function NetworkSetTeamOnlyChat(toggle)
+	return _in(0xD5B4883AC32F24C3, toggle)
 end
 
 function NetworkSetTalkerProximity(p0)
@@ -6323,8 +6411,8 @@ function NetworkSetPropertyId(p0)
 	return _in(0x1775961C2FBBCB5C, p0)
 end
 
-function NetworkSetOverrideSpectatorMode(p0)
-	return _in(0x70DA3BF8DACD3210, p0)
+function NetworkSetOverrideSpectatorMode(toggle)
+	return _in(0x70DA3BF8DACD3210, toggle)
 end
 
 function NetworkSetMissionFinished()
@@ -6351,12 +6439,12 @@ function NetworkSetGamerInvitedToTransition()
 	return _in(0xCA2C8073411ECDB6, _i)
 end
 
-function NetworkSetFriendlyFireOption(p0)
-	return _in(0xF808475FA571D823, p0)
+function NetworkSetFriendlyFireOption(toggle)
+	return _in(0xF808475FA571D823, toggle)
 end
 
-function NetworkSetEntityCanBlend(p0, p1)
-	return _in(0xD830567D88A1E873, p0, p1)
+function NetworkSetEntityCanBlend(p0, toggle)
+	return _in(0xD830567D88A1E873, p0, toggle)
 end
 
 function NetworkSetCurrentlySelectedGamerHandleFromInviteMenu()
@@ -6563,8 +6651,8 @@ function NetworkIsPlayerMutedByMe(player)
 	return _in(0x8C71288AE68EDE39, player, _r)
 end
 
-function NetworkIsPlayerInMpCutscene(p0)
-	return _in(0x63F9EE203C3619F2, p0, _r)
+function NetworkIsPlayerInMpCutscene(player)
+	return _in(0x63F9EE203C3619F2, player, _r)
 end
 
 function NetworkIsPlayerConnected(p0)
@@ -6879,8 +6967,8 @@ function NetworkGetFoundGamer(p1)
 	return _in(0x9DCFF2AFB68B3476, _i, p1, _r)
 end
 
-function NetworkGetEntityKillerOfPlayer(p0)
-	return _in(0x42B2DAA6B596F5F8, p0, _i, _r)
+function NetworkGetEntityKillerOfPlayer(player)
+	return _in(0x42B2DAA6B596F5F8, player, _i, _r)
 end
 
 function NetworkGetEntityIsLocal(p0)
@@ -6939,8 +7027,8 @@ function NetworkEarnFromVehicle(p0, p1, p2, p3, p4, p5, p6, p7)
 	return _in(0xB539BD8A4C1EECF8, p0, p1, p2, p3, p4, p5, p6, p7)
 end
 
-function NetworkEarnFromRockstar(value)
-	return _in(0x02CE1D6AC0FC73EA, value)
+function NetworkEarnFromRockstar(characterIndex)
+	return _in(0x02CE1D6AC0FC73EA, characterIndex)
 end
 
 function NetworkEarnFromProperty(p0, p1)
@@ -7031,8 +7119,8 @@ function NetworkClanPlayerGetDesc(p1)
 	return _in(0xEEE6EACBE8874FBA, _i, p1, _i, _r)
 end
 
-function NetworkClanJoin(p0)
-	return _in(0x9FAAA4F4FC71F87F, p0, _r)
+function NetworkClanJoin(clanHandle)
+	return _in(0x9FAAA4F4FC71F87F, clanHandle, _r)
 end
 
 function NetworkClanGetMembershipValid(p1)
@@ -7099,8 +7187,8 @@ function NetworkBuyHealthcare(cost, p1, p2)
 	return _in(0xD9B067E55253E3DD, cost, p1, p2)
 end
 
-function NetworkBuyBounty(p0, p1, p2, p3)
-	return _in(0x7B718E197453F2D9, p0, p1, p2, p3)
+function NetworkBuyBounty(amount, victim, p2, p3)
+	return _in(0x7B718E197453F2D9, amount, victim, p2, p3)
 end
 
 function NetworkBuyAirstrike(cost, p1, p2)
@@ -7339,16 +7427,16 @@ function IsWaypointActive()
 	return _in(0x1DD1F58F493F1DA5, _r)
 end
 
-function IsVehicleWindowIntact(vehicle, windowNumber)
-	return _in(0x46E571A0E20D01F1, vehicle, windowNumber, _r)
+function IsVehicleWindowIntact(vehicle, windowIndex)
+	return _in(0x46E571A0E20D01F1, vehicle, windowIndex, _r)
 end
 
 function IsVehicleVisible(vehicle)
 	return _in(0xAA0A52D24FB98293, vehicle, _r)
 end
 
-function IsVehicleTyreBurst(vehicle, wheelID, p2)
-	return _in(0xBA291848A0815CA9, vehicle, wheelID, p2, _r)
+function IsVehicleTyreBurst(vehicle, wheelID, completely)
+	return _in(0xBA291848A0815CA9, vehicle, wheelID, completely, _r)
 end
 
 function IsVehicleStuckTimerUp(vehicle, p1, p2)
@@ -7407,8 +7495,8 @@ function IsVehicleHighDetail(p0)
 	return _in(0x1F25887F3C104278, p0, _r)
 end
 
-function IsVehicleExtraTurnedOn(p0, p1)
-	return _in(0xD2E6822DBFD6C8BD, p0, p1, _r)
+function IsVehicleExtraTurnedOn(vehicle, extraId)
+	return _in(0xD2E6822DBFD6C8BD, vehicle, extraId, _r)
 end
 
 function IsVehicleDriveable(vehicle, p1)
@@ -7543,8 +7631,8 @@ function IsStreamPlaying()
 	return _in(0xD11FA52EB849D978, _r)
 end
 
-function IsStreamingAdditionalText(p0)
-	return _in(0x8B6817B71B85EBF0, p0, _r)
+function IsStreamingAdditionalText(additionalText)
+	return _in(0x8B6817B71B85EBF0, additionalText, _r)
 end
 
 function IsSrlLoaded()
@@ -7735,16 +7823,16 @@ function IsPlayerLoggingInNp()
 	return _in(0x74556E1420867ECA, _r)
 end
 
-function IsPlayerInCutscene(p0)
-	return _in(0xE73092F4157CD126, p0, _r)
+function IsPlayerInCutscene(player)
+	return _in(0xE73092F4157CD126, player, _r)
 end
 
 function IsPlayerFreeForAmbientTask(player)
 	return _in(0xDCCFD3F106C36AB4, player, _r)
 end
 
-function IsPlayerFreeAimingAtEntity(player, entity)
-	return _in(0x3C06B5C839B38F7B, player, entity, _r)
+function IsPlayerFreeAimingAtEntity(character, aimedEntity)
+	return _in(0x3C06B5C839B38F7B, character, aimedEntity, _r)
 end
 
 function IsPlayerFreeAiming(player)
@@ -8547,8 +8635,8 @@ function IsDecalAlive(p0)
 	return _in(0xC694D74949CAFD0C, p0, _r)
 end
 
-function IsDamageTrackerActiveOnNetworkId(p0)
-	return _in(0x6E192E33AD436366, p0, _r)
+function IsDamageTrackerActiveOnNetworkId(netID)
+	return _in(0x6E192E33AD436366, netID, _r)
 end
 
 function IsCutscenePlaying()
@@ -8803,8 +8891,8 @@ function HasVehicleGotProjectileAttached(driver, vehicle, weapon, p3)
 	return _in(0x717C8481234E3B88, driver, vehicle, weapon, p3, _r)
 end
 
-function HasVehicleAssetLoaded(p0)
-	return _in(0x1BBE0523B8DB9A21, p0, _r)
+function HasVehicleAssetLoaded(vehicleAsset)
+	return _in(0x1BBE0523B8DB9A21, vehicleAsset, _r)
 end
 
 function HasThisCutsceneLoaded(cutsceneName)
@@ -8833,6 +8921,10 @@ end
 
 function HasScaleformMovieLoaded(scaleform)
 	return _in(0x85F01B8D5B90570E, scaleform, _r)
+end
+
+function HasScaleformContainerMovieLoadedIntoParent(handle)
+	return _in(0x8217150E1217EBFD, handle, _r)
 end
 
 function HasPtfxAssetLoaded()
@@ -8979,8 +9071,8 @@ function HasAnimDictLoaded(animDict)
 	return _in(0xD031A9162D01088C, animDict, _r)
 end
 
-function HasAdditionalTextLoaded(p0)
-	return _in(0x02245FE4BED318B8, p0, _r)
+function HasAdditionalTextLoaded(additionalText)
+	return _in(0x02245FE4BED318B8, additionalText, _r)
 end
 
 function HasActionModeAssetLoaded(asset)
@@ -9275,8 +9367,8 @@ function GetVehicleEngineHealth(vehicle)
 	return _in(0xC45D23BAF168AAB8, vehicle, _r, _rf)
 end
 
-function GetVehicleDoorLockStatus(p0)
-	return _in(0x25BC98A59C2EA962, p0, _r)
+function GetVehicleDoorLockStatus(doorIndex)
+	return _in(0x25BC98A59C2EA962, doorIndex, _r)
 end
 
 function GetVehicleDoorAngleRatio(p0, p1)
@@ -9299,8 +9391,8 @@ function GetVehicleDeformationAtPos(vehicle, position1, position2, position3)
 	return _in(0x4EC6CFBC7B2E9536, vehicle, position1, position2, position3, _r, _rv)
 end
 
-function GetVehicleDefaultHorn(p0)
-	return _in(0x02165D55000219AC, p0, _r)
+function GetVehicleDefaultHorn(veh)
+	return _in(0x02165D55000219AC, veh, _r)
 end
 
 function GetVehicleCustomSecondaryColour(vehicle)
@@ -9415,12 +9507,12 @@ function GetTimePositionInRecording(p0)
 	return _in(0x5746F3A7AB7FE544, p0, _r, _rf)
 end
 
-function GetTimeOffset(p0, p1)
-	return _in(0x017008CCDAD48503, p0, p1, _r)
+function GetTimeOffset(a, b)
+	return _in(0x017008CCDAD48503, a, b, _r)
 end
 
-function GetTimeDifference(p0, p1)
-	return _in(0xA2C6FC031D46FFF0, p0, p1, _r)
+function GetTimeDifference(a, b)
+	return _in(0xA2C6FC031D46FFF0, a, b, _r)
 end
 
 function GetTimecycleModifierIndex()
@@ -9443,8 +9535,8 @@ function GetSynchronizedScenePhase(scene)
 	return _in(0xE4A310B1D7FA73CC, scene, _r, _rf)
 end
 
-function GetStreetNameFromHashKey(key)
-	return _in(0xD0EF8A959B8A4CB9, key, _r, _s)
+function GetStreetNameFromHashKey(hash)
+	return _in(0xD0EF8A959B8A4CB9, hash, _r, _s)
 end
 
 function GetStreetNameAtCoord(x, y, z)
@@ -9563,8 +9655,8 @@ function GetRandomVehicleNode(x, y, z, radius, p4, p5, p6)
 	return _in(0x93E0DB8440B73A7D, x, y, z, radius, p4, p5, p6, _v, _f, _r)
 end
 
-function GetRandomVehicleModelInMemory(b0)
-	return _in(0x055BF0AC0C34F4FD, b0, _i, _i, _r)
+function GetRandomVehicleModelInMemory(p0)
+	return _in(0x055BF0AC0C34F4FD, p0, _i, _i)
 end
 
 function GetRandomVehicleInSphere(x, y, z, radius, modelHash, flags)
@@ -9763,8 +9855,8 @@ function GetPedWeaponTintIndex(ped, weaponHash)
 	return _in(0x2B9EEDC07BD06B9F, ped, weaponHash, _r)
 end
 
-function GetPedWeapontypeInSlot(p0, p1)
-	return _in(0xEFFED78E9011134D, p0, p1, _r)
+function GetPedWeapontypeInSlot(ped, weaponSlot)
+	return _in(0xEFFED78E9011134D, ped, weaponSlot, _r)
 end
 
 function GetPedWaypointProgress(p0)
@@ -9775,8 +9867,8 @@ function GetPedWaypointDistance(p0)
 	return _in(0xE6A877C64CAF1BC5, p0, _r, _rf)
 end
 
-function GetPedType(ped)
-	return _in(0xFF059E1E4C01E63C, ped, _r)
+function GetPedType(model)
+	return _in(0xFF059E1E4C01E63C, model, _r)
 end
 
 function GetPedTextureVariation(ped, componentId)
@@ -10271,8 +10363,8 @@ function GetInteriorFromCollision(p0, p1, p2)
 	return _in(0xEC4CF9FCB29A4424, p0, p1, p2, _r)
 end
 
-function GetInteriorAtCoords(p0, p1, p2)
-	return _in(0xB0F7F8663821D9C3, p0, p1, p2, _r)
+function GetInteriorAtCoords(X, Y, Z)
+	return _in(0xB0F7F8663821D9C3, X, Y, Z, _r)
 end
 
 function GetIndexOfCurrentLevel()
@@ -10995,6 +11087,14 @@ function DrawSpotLight(x, y, z, dirVectorX, dirVectorY, dirVectorZ, r, g, b, dis
 	return _in(0xD0F64B265C8C8B33, x, y, z, dirVectorX, dirVectorY, dirVectorZ, r, g, b, distance, brightness, roundness, radius, fadeout)
 end
 
+function DrawScaleformMovieFullscreenMasked(scaleform1, scaleform2, red, green, blue, alpha)
+	return _in(0xCF537FDE4FBD4CE5, scaleform1, scaleform2, red, green, blue, alpha)
+end
+
+function DrawScaleformMovieFullscreen(scaleform, r, g, b, a)
+	return _in(0x0DF606929C105BE1, scaleform, r, g, b, a)
+end
+
 function DrawScaleformMovie(handle, x, y, width, height, r, g, b, a)
 	return _in(0x54972ADAF0294A93, handle, x, y, width, height, r, g, b, a)
 end
@@ -11111,8 +11211,8 @@ function DoesScenarioGroupExist()
 	return _in(0xF9034C136C9E00D3, _i, _r)
 end
 
-function DoesScenarioExistInArea(p0, p1, p2, p3, p4)
-	return _in(0x5A59271FFADD33C1, p0, p1, p2, p3, p4, _r)
+function DoesScenarioExistInArea(p0, p1, p2, p3, b)
+	return _in(0x5A59271FFADD33C1, p0, p1, p2, p3, b, _r)
 end
 
 function DoesRopeExist()
@@ -11179,8 +11279,8 @@ function DoesAnimDictExist(animDict)
 	return _in(0x2DA49C3B79856961, animDict, _r)
 end
 
-function DisplaySystemSigninUi(MUSCLE)
-	return _in(0x94DD7888C10A979E, MUSCLE)
+function DisplaySystemSigninUi(scrHandle)
+	return _in(0x94DD7888C10A979E, scrHandle)
 end
 
 function DisplaySniperScopeThisFrame()
@@ -11363,8 +11463,8 @@ function DeleteRope()
 	return _in(0x52B4829281364649, _i)
 end
 
-function DeletePed()
-	return _in(0x9614299DCB53E54B, _i)
+function DeletePed(ped)
+	return _in(0x9614299DCB53E54B, ped)
 end
 
 function DeletePatrolRoute()
@@ -11395,8 +11495,8 @@ function DeleteChildRope(rope)
 	return _in(0xAA5D6B1888E4DB20, rope, _r)
 end
 
-function DeleteCheckpoint(p0)
-	return _in(0xF5ED37F54CD4D52E, p0)
+function DeleteCheckpoint(checkpoint)
+	return _in(0xF5ED37F54CD4D52E, checkpoint)
 end
 
 function DeleteAllTrains()
@@ -11491,8 +11591,8 @@ function CreatePickup(typeHash, posX, posY, posZ, p4, value, p6, customModelHash
 	return _in(0xFBA08C503DD5FA58, typeHash, posX, posY, posZ, p4, value, p6, customModelHash, _r)
 end
 
-function CreatePedInsideVehicle(vehicle, pedType, modelHash, seat, createNetHandle, createPedHandle)
-	return _in(0x7DD959874C1FD534, vehicle, pedType, modelHash, seat, createNetHandle, createPedHandle, _r)
+function CreatePedInsideVehicle(vehicle, pedType, modelHash, seat, NetworkHandle, PedHandle)
+	return _in(0x7DD959874C1FD534, vehicle, pedType, modelHash, seat, NetworkHandle, PedHandle, _r)
 end
 
 function CreatePed(pedType, modelHash, x, y, z, heading, networkHandle, pedHandle)
@@ -11779,8 +11879,8 @@ function ClearFacialIdleAnimOverride(p0)
 	return _in(0x726256CC1EEB182F, p0)
 end
 
-function ClearEntityLastWeaponDamage(p0)
-	return _in(0xAC678E40BE7C74D2, p0)
+function ClearEntityLastWeaponDamage(entity)
+	return _in(0xAC678E40BE7C74D2, entity)
 end
 
 function ClearEntityLastDamageEntity(entity)
@@ -11855,8 +11955,8 @@ function ClearAllBrokenGlass()
 	return _in(0xB32209EFFDC04913, _r)
 end
 
-function ClearAdditionalText(p0, p1)
-	return _in(0x2A179DF17CCF04CD, p0, p1)
+function ClearAdditionalText(additionalText, p1)
+	return _in(0x2A179DF17CCF04CD, additionalText, p1)
 end
 
 function CleanItemset(p0)
@@ -12207,8 +12307,8 @@ function AnimatedShakeCam(cam, p1, p2, p3, amplitude)
 	return _in(0xA2746EEAE3E577CD, cam, p1, p2, p3, amplitude)
 end
 
-function AdvanceClockTimeTo(p0, p1, p2)
-	return _in(0xC8CA9670B9D83B3B, p0, p1, p2)
+function AdvanceClockTimeTo(hour, minute, second)
+	return _in(0xC8CA9670B9D83B3B, hour, minute, second)
 end
 
 function AddVehicleUpsidedownCheck(vehicle)
@@ -12235,8 +12335,8 @@ function AddToItemset(p0, p1)
 	return _in(0xE3945201F14637DD, p0, p1, _r)
 end
 
-function AddToClockTime(p0, p1, p2)
-	return _in(0xD716F30D8C8980E2, p0, p1, p2)
+function AddToClockTime(hours, minutes, seconds)
+	return _in(0xD716F30D8C8980E2, hours, minutes, seconds)
 end
 
 function AddTextComponentSubstringTime(timestamp, flags)
@@ -12391,8 +12491,8 @@ function ActivateFrontendMenu(menuhash, p1, p2)
 	return _in(0xEF01D36B9C9D0C7B, menuhash, p1, p2)
 end
 
-function ActivateDamageTrackerOnNetworkId(p0, p1)
-	return _in(0xD45B1FFCCD52FF19, p0, p1)
+function ActivateDamageTrackerOnNetworkId(netID, p1)
+	return _in(0xD45B1FFCCD52FF19, netID, p1)
 end
 
 function Acos(p0)
@@ -12547,8 +12647,8 @@ function N_0xfb8f2a6f3df08cbe()
 	return _in(0xFB8F2A6F3DF08CBE)
 end
 
-function N_0xfb6db092fbae29e6(p0)
-	return _in(0xFB6DB092FBAE29E6, p0, _i, _i)
+function N_0xfb6db092fbae29e6(p0, p1)
+	return _in(0xFB6DB092FBAE29E6, p0, p1, _i)
 end
 
 function N_0xfb680d403909dc70(p0, p1)
@@ -12725,10 +12825,6 @@ end
 
 function N_0xf5bed327cea362b1(p0)
 	return _in(0xF5BED327CEA362B1, p0, _r)
-end
-
-function N_0xf5bc95857bd6d512(p0, p1)
-	return _in(0xF5BC95857BD6D512, p0, p1, _r)
 end
 
 function N_0xf5bb8dac426a52c0()
@@ -12944,7 +13040,7 @@ function N_0xf0f77adb9f67e79d(p0, p1, p2, p3)
 end
 
 function N_0xf0f2103efaf8cba7(p0, p1)
-	return _in(0xF0F2103EFAF8CBA7, p0, p1, _r)
+	return _in(0xF0F2103EFAF8CBA7, p0, p1, _r, _rv)
 end
 
 function N_0xf0eed5a6bc7b237a(p0, p1, p2)
@@ -12993,6 +13089,10 @@ end
 
 function N_0xefabc7722293da7c()
 	return _in(0xEFABC7722293DA7C)
+end
+
+function N_0xef7d17bc6c85264c()
+	return _in(0xEF7D17BC6C85264C, _r)
 end
 
 function N_0xef49cf0270307cbe()
@@ -13567,10 +13667,6 @@ function N_0xde81239437e8c5a8()
 	return _in(0xDE81239437E8C5A8)
 end
 
-function N_0xde350f8651e4346c(p0, p1)
-	return _in(0xDE350F8651E4346C, p0, p1, _r)
-end
-
 function N_0xde03620f8703a9df()
 	return _in(0xDE03620F8703A9DF, _r)
 end
@@ -13843,10 +13939,6 @@ function N_0xd422fcc5f239a915()
 	return _in(0xD422FCC5F239A915, _r)
 end
 
-function N_0xd3f2ffeb8d836f52(arrayIndex)
-	return _in(0xD3F2FFEB8D836F52, _i, arrayIndex, _r, _s)
-end
-
 function N_0xd3d15555431ab793()
 	return _in(0xD3D15555431AB793, _r)
 end
@@ -14031,10 +14123,6 @@ function N_0xcf61d4b4702ee9eb()
 	return _in(0xCF61D4B4702EE9EB, _r)
 end
 
-function N_0xcf537fde4fbd4ce5(scaleform1, scaleform2, red, green, blue, alpha)
-	return _in(0xCF537FDE4FBD4CE5, scaleform1, scaleform2, red, green, blue, alpha)
-end
-
 function N_0xcf38dafbb49ede5e()
 	return _in(0xCF38DAFBB49EDE5E, _i, _r)
 end
@@ -14129,10 +14217,6 @@ end
 
 function N_0xcb82a0bf0e3e3265(p0)
 	return _in(0xCB82A0BF0E3E3265, p0, _r)
-end
-
-function N_0xcb2cf5148012c8d0(p0, p1)
-	return _in(0xCB2CF5148012C8D0, p0, p1, _r)
 end
 
 function N_0xcb215c4b56a7fae7(p0)
@@ -14347,10 +14431,6 @@ function N_0xc6033d32241f6fb5(p0, p1)
 	return _in(0xC6033D32241F6FB5, p0, p1)
 end
 
-function N_0xc5f0a8ebd3f361ce(p0)
-	return _in(0xC5F0A8EBD3F361CE, p0)
-end
-
 function N_0xc5be134ec7ba96a0(p0, p1, p2, p3, p4)
 	return _in(0xC5BE134EC7BA96A0, p0, p1, p2, p3, p4)
 end
@@ -14533,10 +14613,6 @@ end
 
 function N_0xc0d2af00bcc234ca()
 	return _in(0xC0D2AF00BCC234CA, _r)
-end
-
-function N_0xc0c527b525d7cfb5(arrayIndex)
-	return _in(0xC0C527B525D7CFB5, _i, arrayIndex, _r, _rf)
 end
 
 function N_0xc098810437312fff(p0)
@@ -14911,8 +14987,8 @@ function N_0xb4f47213df45a64c(p0)
 	return _in(0xB4F47213DF45A64C, p0, _i, _r)
 end
 
-function N_0xb4c8d77c80c0421e(weaponHash, p1)
-	return _in(0xB4C8D77C80C0421E, weaponHash, p1, _r)
+function N_0xb4c8d77c80c0421e(ped, p1)
+	return _in(0xB4C8D77C80C0421E, ped, p1, _r)
 end
 
 function N_0xb4bbfd9cd8b3922b()
@@ -15043,10 +15119,6 @@ function N_0xb11d94bc55f41932()
 	return _in(0xB11D94BC55F41932, _i)
 end
 
-function N_0xb118af58b5f332a1()
-	return _in(0xB118AF58B5F332A1, _r)
-end
-
 function N_0xb0a6cfd2c69c1088(p0, p2)
 	return _in(0xB0A6CFD2C69C1088, p0, _i, p2)
 end
@@ -15167,20 +15239,12 @@ function N_0xacfb2463cc22bed2(p0)
 	return _in(0xACFB2463CC22BED2, p0)
 end
 
-function N_0xacee6f360fc1f6b6(p0, p1)
-	return _in(0xACEE6F360FC1F6B6, p0, p1)
-end
-
 function N_0xaccfb4acf53551b0(p0, p1, p2, p3, p4)
 	return _in(0xACCFB4ACF53551B0, p0, p1, p2, p3, p4, _r)
 end
 
 function N_0xacb5dcca1ec76840(p0)
 	return _in(0xACB5DCCA1EC76840, p0, _r)
-end
-
-function N_0xac97af97fa68e5d5(p0)
-	return _in(0xAC97AF97FA68E5D5, p0, _i)
 end
 
 function N_0xac2890471901861c(p0)
@@ -15675,10 +15739,6 @@ function N_0x9e30e91fb03a2caf()
 	return _in(0x9E30E91FB03A2CAF, _i, _i, _r)
 end
 
-function N_0x9e23b1777a927dad(p0)
-	return _in(0x9E23B1777A927DAD, p0, _r)
-end
-
 function N_0x9dfe13ecdc1ec196(p0, p1)
 	return _in(0x9DFE13ECDC1EC196, p0, p1)
 end
@@ -15725,10 +15785,6 @@ end
 
 function N_0x9cfdd90b2b844bf7(p0, p1, p2, p3, p4)
 	return _in(0x9CFDD90B2B844BF7, p0, p1, p2, p3, p4)
-end
-
-function N_0x9cfa4896c3a53cbb(vehicle, x, y)
-	return _in(0x9CFA4896C3A53CBB, vehicle, x, y)
 end
 
 function N_0x9cb0bfa7a9342c3d(p0, p1)
@@ -15923,10 +15979,6 @@ function N_0x971da0055324d033(p0, p1)
 	return _in(0x971DA0055324D033, p0, p1)
 end
 
-function N_0x96ef97daeb89bef5(p0)
-	return _in(0x96EF97DAEB89BEF5, p0)
-end
-
 function N_0x9689123e3f213aa5()
 	return _in(0x9689123E3F213AA5, _r)
 end
@@ -15949,10 +16001,6 @@ end
 
 function N_0x95cf53b3d687f9fa(p0)
 	return _in(0x95CF53B3D687F9FA, p0)
-end
-
-function N_0x95c9e72f3d7dec9b(p0)
-	return _in(0x95C9E72F3D7DEC9B, p0)
 end
 
 function N_0x95a7dabddbb78ae7()
@@ -16035,8 +16083,8 @@ function N_0x92f0da1e27db96dc(p0)
 	return _in(0x92F0DA1E27DB96DC, p0)
 end
 
-function N_0x92da6e70ef249bd1(p0, p1)
-	return _in(0x92DA6E70EF249BD1, p0, p1, _r)
+function N_0x92da6e70ef249bd1(p0)
+	return _in(0x92DA6E70EF249BD1, p0, _i, _r)
 end
 
 function N_0x92ccc17a7a2285da()
@@ -16235,8 +16283,8 @@ function N_0x8be1146dfd5d4468()
 	return _in(0x8BE1146DFD5D4468, _i, _i, _i, _r)
 end
 
-function N_0x8bdc7bfc57a81e76(p0, p1, p2, p3, p4)
-	return _in(0x8BDC7BFC57A81E76, p0, p1, p2, p3, p4, _r)
+function N_0x8bdc7bfc57a81e76(X, Y, Zz, p3, p4)
+	return _in(0x8BDC7BFC57A81E76, X, Y, Zz, p3, p4, _r)
 end
 
 function N_0x8bd6c6dea20e82c6(p0)
@@ -16475,8 +16523,8 @@ function N_0x83a169eabcdb10a2(p0, p1)
 	return _in(0x83A169EABCDB10A2, p0, p1)
 end
 
-function N_0x82fde6a57ee4ee44(p0, p1, p2, p3, p4, p5)
-	return _in(0x82FDE6A57EE4EE44, p0, p1, p2, p3, p4, p5, _r)
+function N_0x82fde6a57ee4ee44(ped, weaponhash, p2, p3, p4, p5)
+	return _in(0x82FDE6A57EE4EE44, ped, weaponhash, p2, p3, p4, p5, _r)
 end
 
 function N_0x82ebb79e258fa2b7(entity, id)
@@ -16509,10 +16557,6 @@ end
 
 function N_0x82352748437638ca()
 	return _in(0x82352748437638CA, _r)
-end
-
-function N_0x8217150e1217ebfd(p0)
-	return _in(0x8217150E1217EBFD, p0, _r)
 end
 
 function N_0x8204da7934df3155(p0, p1, p2)
@@ -16625,10 +16669,6 @@ end
 
 function N_0x7ec6f9a478a6a512()
 	return _in(0x7EC6F9A478A6A512)
-end
-
-function N_0x7ec52cc40597d170()
-	return _in(0x7EC52CC40597D170, _r, _rf)
 end
 
 function N_0x7e6946f68a38b74f(p0)
@@ -17032,7 +17072,7 @@ function N_0x71862b1d855f32e1(p1, p2, p3)
 end
 
 function N_0x717e4d1f2048376d(p0)
-	return _in(0x717E4D1F2048376D, p0, _r)
+	return _in(0x717E4D1F2048376D, p0, _r, _s)
 end
 
 function N_0x715135f4b82ac90d(entity)
@@ -17181,10 +17221,6 @@ end
 
 function N_0x6d955f6a9e0295b1(p0, p1, p2, p3, p4, p5, p6)
 	return _in(0x6D955F6A9E0295B1, p0, p1, p2, p3, p4, p5, p6)
-end
-
-function N_0x6d8eb211944dce08(p0, p1)
-	return _in(0x6D8EB211944DCE08, p0, p1)
 end
 
 function N_0x6d8eac07506291fb(p0, p1)
@@ -17539,8 +17575,8 @@ function N_0x61e111e323419e07(p0, p1, p2, p3)
 	return _in(0x61E111E323419E07, p0, p1, p2, p3, _r)
 end
 
-function N_0x61bb1d9b3a95d802(p0)
-	return _in(0x61BB1D9B3A95D802, p0)
+function N_0x61bb1d9b3a95d802(layer)
+	return _in(0x61BB1D9B3A95D802, layer)
 end
 
 function N_0x61a885d3f7cfee9a()
@@ -17603,20 +17639,12 @@ function N_0x600f8cb31c7aab6e(p0)
 	return _in(0x600F8CB31C7AAB6E, p0)
 end
 
-function N_0x6009f9f1ae90d8a6(p1)
-	return _in(0x6009F9F1AE90D8A6, _i, p1)
-end
-
 function N_0x600048c60d5c2c51(p0)
 	return _in(0x600048C60D5C2C51, p0)
 end
 
 function N_0x5fd5ed82cbbe9989(p0, p1, p2)
 	return _in(0x5FD5ED82CBBE9989, p0, p1, p2)
-end
-
-function N_0x5fcf4d7069b09026()
-	return _in(0x5FCF4D7069B09026, _r)
 end
 
 function N_0x5fc472c501ccadb3(player)
@@ -17801,10 +17829,6 @@ end
 
 function N_0x5b4f04f19376a0ba()
 	return _in(0x5B4F04F19376A0BA, _r)
-end
-
-function N_0x5b4e4c817fcc2dfb(p0)
-	return _in(0x5B4E4C817FCC2DFB, p0, _r)
 end
 
 function N_0x5b48a06dd0e792a5()
@@ -18443,10 +18467,6 @@ function N_0x46fb3ed415c7641c(p0, p1, p2)
 	return _in(0x46FB3ED415C7641C, p0, p1, p2, _r)
 end
 
-function N_0x46e2b844905bc5f0(zero)
-	return _in(0x46E2B844905BC5F0, _i, zero, _r)
-end
-
 function N_0x46d1a61a21f566fc(p0)
 	return _in(0x46D1A61A21F566FC, p0)
 end
@@ -18515,14 +18535,6 @@ function N_0x451294e859ecc018(p0)
 	return _in(0x451294E859ECC018, p0, _r)
 end
 
-function N_0x44fa03975424a0ee(p0, p1)
-	return _in(0x44FA03975424A0EE, p0, p1, _r)
-end
-
-function N_0x44e44169ef70138e(Toggle)
-	return _in(0x44E44169EF70138E, Toggle)
-end
-
 function N_0x44b37cdcae765aae(p0)
 	return _in(0x44B37CDCAE765AAE, p0, _i, _r)
 end
@@ -18547,8 +18559,8 @@ function N_0x43f4dba69710e01e()
 	return _in(0x43F4DBA69710E01E)
 end
 
-function N_0x43e4111189e54f0e()
-	return _in(0x43E4111189E54F0E, _i, _r)
+function N_0x43e4111189e54f0e(p0)
+	return _in(0x43E4111189E54F0E, p0, _r)
 end
 
 function N_0x43d1680c6d19a8e9()
@@ -18853,10 +18865,6 @@ end
 
 function N_0x37a4494483b9f5c9()
 	return _in(0x37A4494483B9F5C9, _r)
-end
-
-function N_0x378e809bf61ec840(p0, p1)
-	return _in(0x378E809BF61EC840, p0, p1, _r)
 end
 
 function N_0x376c6375ba60293a(p0, p1, p2, p3, p4, p5, p6)
@@ -19579,8 +19587,8 @@ function N_0x2485d34e50a22e84(p0, p1, p2)
 	return _in(0x2485D34E50A22E84, p0, p1, p2)
 end
 
-function N_0x247f0f73a182ea0b(p0)
-	return _in(0x247F0F73A182EA0B, p0, _r)
+function N_0x247f0f73a182ea0b(hash)
+	return _in(0x247F0F73A182EA0B, hash, _r)
 end
 
 function N_0x247acbc4abbc9d1c(p0)
@@ -19671,8 +19679,8 @@ function N_0x225798743970412b()
 	return _in(0x225798743970412B, _i, _r)
 end
 
-function N_0x2208438012482a1a(p0, p1, p2)
-	return _in(0x2208438012482A1A, p0, p1, p2)
+function N_0x2208438012482a1a(ped, p1, p2)
+	return _in(0x2208438012482A1A, ped, p1, p2)
 end
 
 function N_0x2201c576facaebe8(p0, p2)
@@ -19732,7 +19740,7 @@ function N_0x20c6c7e4eb082a7f(p0)
 end
 
 function N_0x20ac25e781ae4a84()
-	return _in(0x20AC25E781AE4A84, _r)
+	return _in(0x20AC25E781AE4A84, _r, _rf)
 end
 
 function N_0x208784099002bc30(p0, p1)
@@ -19827,10 +19835,6 @@ function N_0x1dd2139a9a20dce8()
 	return _in(0x1DD2139A9A20DCE8, _r)
 end
 
-function N_0x1db21a44b09e8ba3(p0)
-	return _in(0x1DB21A44B09E8BA3, p0)
-end
-
 function N_0x1d97d1e3a70a649f(p0, p1)
 	return _in(0x1D97D1E3A70A649F, p0, p1)
 end
@@ -19913,10 +19917,6 @@ end
 
 function N_0x1accfba3d8dab2ee(p0, p1)
 	return _in(0x1ACCFBA3D8DAB2EE, p0, p1, _r)
-end
-
-function N_0x1ac8f4ad40e22127()
-	return _in(0x1AC8F4AD40E22127)
 end
 
 function N_0x1aa8a837d2169d94(p0, p1)
@@ -20099,8 +20099,8 @@ function N_0x158ec424f35ec469(p1)
 	return _in(0x158EC424F35EC469, _i, p1, _i, _r)
 end
 
-function N_0x153973ab99fe8980(p0, p2)
-	return _in(0x153973AB99FE8980, p0, _i, p2)
+function N_0x153973ab99fe8980(p0, p1, p2)
+	return _in(0x153973AB99FE8980, p0, p1, p2)
 end
 
 function N_0x152d90e4c1b4738a()
