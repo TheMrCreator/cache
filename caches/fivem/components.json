@@ -40,6 +40,7 @@
 	"nui:resources",
 	"citizen:scripting:core",
 	"citizen:scripting:lua",
+	"citizen:scripting:v8",
 	"scripting:gta",
 	"citizen:resources:client",
 	"citizen:legacy-net:resources",
