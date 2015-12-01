@@ -81,12 +81,19 @@ Citizen.SetEventRoutine(function(eventName, eventPayload, eventSource)
 		-- if this is a net event and we don't allow this event to be triggered from the network, return
 		if eventSource:sub(1, 3) == 'net' then
 			if not eventHandlerEntry.safeForNet then
+				Citizen.Trace('event ' .. eventName .. " was not save for net\n")
+
 				return
 			end
 		end
 
 		-- if we found one, deserialize the data structure
 		local data = msgpack.unpack(eventPayload)
+
+		-- return an empty table if the data is nil
+		if not data then
+			data = {}
+		end
 
 		-- if this is a table...
 		if type(data) == 'table' then
