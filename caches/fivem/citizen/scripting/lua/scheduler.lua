@@ -81,7 +81,7 @@ Citizen.SetEventRoutine(function(eventName, eventPayload, eventSource)
 		-- if this is a net event and we don't allow this event to be triggered from the network, return
 		if eventSource:sub(1, 3) == 'net' then
 			if not eventHandlerEntry.safeForNet then
-				Citizen.Trace('event ' .. eventName .. " was not save for net\n")
+				Citizen.Trace('event ' .. eventName .. " was not safe for net\n")
 
 				return
 			end
