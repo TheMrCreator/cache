@@ -10,14 +10,33 @@
 
             if (titleId.IsLauncher)
             {
-                document.querySelector('div.launcher').style.display = 'block';
+                document.querySelector('div.login').style.display = 'block';
             }
             else
             {
                 document.querySelector('div.ingame').style.display = 'block';
+
+                setTimeout(function()
+                {
+                    var xhr = new XMLHttpRequest();
+                    xhr.addEventListener('readystatechange', function()
+                    {
+                        if (xhr.readyState == 4)
+                        {
+                            var jsonObject = JSON.parse(xhr.responseText);
+
+                            jsonObject.XMLResponse = encodeURIComponent(jsonObject.XMLResponse);
+
+                            RGSC_SIGN_IN(JSON.stringify(jsonObject));
+                        }
+                    });
+
+                    xhr.open("POST", "/cfx/login", true);
+                    xhr.send(JSON.stringify({ local: true }));
+                }, 1000);
             }
 
-            setTimeout(function()
+            var submit = function()
             {
                 var xhr = new XMLHttpRequest();
                 xhr.addEventListener('readystatechange', function()
@@ -26,15 +45,43 @@
                     {
                         var jsonObject = JSON.parse(xhr.responseText);
 
-                        jsonObject.XMLResponse = encodeURIComponent(jsonObject.XMLResponse);
+                        if (jsonObject.error)
+                        {
+                            document.querySelector('div.login h1.hm').innerHTML = jsonObject.error;
+                        }
+                        else
+                        {
+                            jsonObject.XMLResponse = encodeURIComponent(jsonObject.XMLResponse);
 
-                        RGSC_SIGN_IN(JSON.stringify(jsonObject));
+                            RGSC_SIGN_IN(JSON.stringify(jsonObject));
+
+                            document.querySelector('div.login').style.display = 'none';
+                            document.querySelector('div.launcher').style.display = 'block';
+                        }
                     }
                 });
 
-                xhr.open("GET", "/cfx/login", true);
-                xhr.send();
-            }, 1000);
+                xhr.open("POST", "/cfx/login", true);
+                xhr.send(JSON.stringify({ username: document.querySelector('input#username').value, password: document.querySelector('input#password').value }));
+            };
+
+            document.querySelector('form.login').addEventListener('submit', function(e)
+            {
+                submit();
+
+                e.preventDefault();
+            });
+
+            document.querySelectorAll('input').forEach(function(el)
+            {
+                el.addEventListener('keypress', function(e)
+                {
+                    if (e.keyCode == 13 || e.which == 13)
+                    {
+                        submit();
+                    }
+                }, true)
+            });
         }
 
         function RGSC_JS_PING()
@@ -50,7 +97,11 @@
 
             if (s.State.toUpperCase() == "ACTIVATION")
             {
-                document.querySelector('body').classList.add("rotate");
+                //document.querySelector('body').classList.add("rotate");
+                document.querySelector('div.ingame').style.display = 'none';
+                document.querySelector('div.launcher').style.display = 'none';
+                document.querySelector('div.login').style.display = 'none';
+                document.querySelector('div.activation').style.display = 'block';
             }
 
             //document.querySelector('p').innerHTML = s.State;
@@ -86,9 +137,15 @@
             padding: 0px;
         }
 
-        .ingame, .launcher
+        .ingame, .launcher, .activation, div.login
         {
             display: none;
+        }
+
+        .activation, .login
+        {
+            color: #fff;
+            font-family: Titillium;
         }
 
         .launcher *
@@ -225,6 +282,24 @@
                 </p>
             </div>
         </div>
+    </div>
+    <div class="activation">
+        <h1>YOU'RE A PIRATE. KILL THIS PROCESS USING TASKMGR TO BE DONE WITH IT.</h1>
+    </div>
+    <div class="login">
+        <h1 id="logo" class="logotype">
+            <a><i class="fa fa-road"></i> FiveM</a>
+        </h1>
+
+        <h1 class="hm">Social Club login (don't mind the clutter)</h1>
+
+        <form class="login">
+            <input type="text" name="username" id="username" placeholder="Username/Email" />
+            <br />
+            <input type="password" name="password" id="password" placeholder="Password" />
+            <br />
+            <input type="submit" value="Log in" />
+        </form>
     </div>
     <div class="launcher">
         <div id="content">
