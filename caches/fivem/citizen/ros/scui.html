@@ -16,7 +16,9 @@
             {
                 document.querySelector('div.ingame').style.display = 'block';
 
-                setTimeout(function()
+                var loginAgain;
+                
+                loginAgain = function()
                 {
                     var xhr = new XMLHttpRequest();
                     xhr.addEventListener('readystatechange', function()
@@ -31,9 +33,17 @@
                         }
                     });
 
+                    xhr.addEventListener('timeout', function()
+                    {
+                        setTimeout(loginAgain, 1000);
+                    });
+
                     xhr.open("POST", "/cfx/login", true);
+                    xhr.timeout = 2000;
                     xhr.send(JSON.stringify({ local: true }));
-                }, 1000);
+                };
+
+                setTimeout(loginAgain, 1000);
             }
 
             var submit = function()
